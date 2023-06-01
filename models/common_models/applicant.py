@@ -3,10 +3,10 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
-from models.common_models.calendar_event_base import ApplicantLogCalendarEvent
-from models.common_models.hf_base import AccountFile, AccountInfo
-from models.common_models.survey_questionary_base import SurveyQuestionary
-from models.common_models.vacancy_base import Vacancy
+from models.common_models.calendar_event import ApplicantLogCalendarEvent
+from models.common_models.hf_base import AccountFile
+from models.common_models.survey_questionary import SurveyQuestionary
+from models.common_models.vacancy import Vacancy
 from models.consts import AgreementState, ApplicantLogType, SurveyType
 
 
@@ -44,53 +44,6 @@ class ApplicantPhoto(AccountFile):
     pass
 
 
-class HiredInFillQuota(BaseModel):
-    id: int = Field(..., description="Fill quota ID", example=1)
-    vacancy_frame: int = Field(..., description="Vacancy frame ID", example=1)
-    created: datetime = Field(
-        ...,
-        description="Date and time of creating a vacancy quota",
-        example=datetime(1970, 1, 1, 1, 1, 1),
-    )
-    changed: Optional[datetime] = Field(
-        None,
-        description="Date and time of updating a vacancy quota",
-        example=datetime(1970, 1, 1, 1, 1, 1),
-    )
-    applicants_to_hire: int = Field(
-        ...,
-        description="Number of applicants should be hired on the quota",
-        example=2,
-    )
-    already_hired: Optional[int] = Field(
-        ...,
-        description="Number of applicants already hired on the quota",
-        example=1,
-    )
-    vacancy_request: Optional[int] = Field(None, description="Vacancy request ID", example=1)
-    deadline: Optional[date] = Field(
-        None,
-        description="Date when the quota should be filled",
-        example=date(1970, 1, 1),
-    )
-    closed: Optional[datetime] = Field(
-        None,
-        description="Date and time when the quota was closed",
-        example=datetime(1970, 1, 1, 1, 1, 1),
-    )
-    work_days_in_work: Optional[int] = Field(
-        None,
-        description="How many working days the vacancy is in work",
-        example=1,
-    )
-    work_days_after_deadline: Optional[int] = Field(
-        None,
-        description="How many working days the vacancy is in work after deadline",
-        example=1,
-    )
-    account_info: AccountInfo
-
-
 class Applicant(BaseModel):
     id: int = Field(..., description="Applicant ID", example=1)
     email: Optional[str] = Field(None, description="Applicant's email", example="email@example.com")
@@ -100,7 +53,7 @@ class Applicant(BaseModel):
     position: Optional[str] = Field(None, description="Applicant's current job", example="test")
     birthday: Optional[date] = Field(
         None,
-        description="The last position in which the work of the applicant",
+        description="Applicant's birthday",
         example=date(1970, 1, 1),
     )
     company: Optional[str] = Field(
@@ -110,7 +63,7 @@ class Applicant(BaseModel):
     )
     money: Optional[str] = Field(None, description="Desired salary of the applicant", example="10$")
     phone: Optional[str] = Field(None, description="Applicant's phone", example="+99999999")
-    skype: Optional[str] = Field(None, description="Applicant,s skype", example="test_skype")
+    skype: Optional[str] = Field(None, description="Applicant's skype", example="test_skype")
     photo: Optional[ApplicantPhoto] = Field(None, description="Applicant's photo")
     social: List[ApplicantSocial] = Field([], description="Applicant social media list")
     questionary: Optional[datetime] = Field(
@@ -205,7 +158,6 @@ class ApplicantLog(BaseModel):
     )
     source: Optional[str]
     files: List[AccountFile] = Field([], description="List of uploaded files")
-    hired_in_fill_quota: Optional[HiredInFillQuota] = None
     survey_answer_of_type_a: Optional[SurveyAnswerOfTypeA] = None
     rejection_reason: Optional[RejectionReason] = None
     survey_questionary: Optional[SurveyQuestionary] = None

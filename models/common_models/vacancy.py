@@ -46,7 +46,7 @@ class Vacancy(BaseModel):
     )
     body: Optional[str] = Field(
         None,
-        description="Vacancy responsivbilities (HTML)",
+        description="Vacancy responsibilities (HTML)",
         example="<p>Be happy</p>",
     )
     company: Optional[str] = Field(None, description="Vacancy company", example="Huntflow")

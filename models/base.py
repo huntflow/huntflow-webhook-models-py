@@ -7,8 +7,8 @@ from models.consts import WebhookEventType
 
 class Account(BaseModel):
     id: int = Field(..., description="Account ID", example=1)
-    name: str = Field(..., description="Account owner name", example="John")
-    nick: str = Field(..., description="Account nick", example="Test")
+    name: str = Field(..., description="Account name", example="Huntflow")
+    nick: str = Field(..., description="Account nick", example="HF")
 
 
 class Author(BaseModel):

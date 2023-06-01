@@ -2,8 +2,8 @@ from typing import List
 
 from pydantic import BaseModel
 
-from models.base_hook import BaseHuntflowWebhookRequest, WebhookMetaInfoBase
-from models.common_models.applicant_base import Applicant, ApplicantLog, ApplicantTag
+from models.base import BaseHuntflowWebhookRequest, WebhookMetaInfoBase
+from models.common_models.applicant import Applicant, ApplicantLog, ApplicantTag
 from models.consts import ApplicantWebhookActionType
 
 
