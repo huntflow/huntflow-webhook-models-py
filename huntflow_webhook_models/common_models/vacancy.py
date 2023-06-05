@@ -3,7 +3,7 @@ from typing import Dict, Optional
 
 from pydantic import BaseModel, Field
 
-from models.consts import VacancyState
+from huntflow_webhook_models.consts import VacancyState
 
 
 class FillQuota(BaseModel):

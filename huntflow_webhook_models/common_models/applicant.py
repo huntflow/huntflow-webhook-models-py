@@ -3,11 +3,11 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
-from models.common_models.calendar_event import ApplicantLogCalendarEvent
-from models.common_models.hf_base import AccountFile
-from models.common_models.survey_questionary import SurveyQuestionary
-from models.common_models.vacancy import Vacancy
-from models.consts import AgreementState, ApplicantLogType, SurveyType
+from huntflow_webhook_models.common_models.calendar_event import ApplicantLogCalendarEvent
+from huntflow_webhook_models.common_models.hf_base import AccountFile
+from huntflow_webhook_models.common_models.survey_questionary import SurveyQuestionary
+from huntflow_webhook_models.common_models.vacancy import Vacancy
+from huntflow_webhook_models.consts import AgreementState, ApplicantLogType, SurveyType
 
 
 class ApplicantSocial(BaseModel):

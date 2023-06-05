@@ -2,7 +2,7 @@ from typing import Dict, Optional
 
 from pydantic import BaseModel, Field
 
-from models.consts import WebhookEventType
+from huntflow_webhook_models.consts import WebhookEventType
 
 
 class Account(BaseModel):
