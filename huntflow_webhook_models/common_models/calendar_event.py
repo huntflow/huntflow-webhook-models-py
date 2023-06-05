@@ -3,7 +3,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
-from models.consts import (
+from huntflow_webhook_models.consts import (
     CalendarEventReminderMethod,
     CalendarEventStatus,
     CalendarEventType,
