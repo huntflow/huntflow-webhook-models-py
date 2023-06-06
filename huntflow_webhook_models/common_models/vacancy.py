@@ -31,12 +31,16 @@ class FillQuota(BaseModel):
     )
 
 
+class AccountDivision(BaseModel):
+    id: int = Field(..., description="Account division ID", example=1)
+    name: str = Field(..., description="Account division name", example="Test")
+
+
 class Vacancy(BaseModel):
     id: int = Field(..., description="Vacancy ID", example=1)
-    account_division: Optional[int] = Field(
+    account_division: Optional[AccountDivision] = Field(
         None,
-        description="Vacancy account division ID",
-        example=1,
+        description="Vacancy account division",
     )
     account_region: Optional[int] = Field(None, description="Vacancy region ID", example=1)
     applicant_to_hire: Optional[int] = Field(
@@ -61,7 +65,7 @@ class Vacancy(BaseModel):
         example=datetime(1970, 1, 1, 1, 1, 1),
     )
     deadline: Optional[date] = Field(..., description="Vacancy deadline", example=date(1970, 1, 1))
-    fill_quotas: FillQuota
+    fill_quotas: FillQuota = Field(..., description="Vacancy fill quota")
     frame_id: int = Field(..., description="Vacancy frame ID", example=1)
     hidden: bool = Field(..., description="Hidden vacnacy flag", example=True)
     money: Optional[str] = Field(None, description="Salary for vacacny", example="100000")
