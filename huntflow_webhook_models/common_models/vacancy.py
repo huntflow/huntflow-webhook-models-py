@@ -1,5 +1,5 @@
 from datetime import date, datetime
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
@@ -33,7 +33,7 @@ class FillQuota(BaseModel):
 
 class AccountDivision(BaseModel):
     id: int = Field(..., description="Account division ID", example=1)
-    name: str = Field(..., description="Account division name", example="Test")
+    name: str = Field(..., description="Account division name", example="IT Department")
 
 
 class Vacancy(BaseModel):
@@ -65,7 +65,7 @@ class Vacancy(BaseModel):
         example=datetime(1970, 1, 1, 1, 1, 1),
     )
     deadline: Optional[date] = Field(..., description="Vacancy deadline", example=date(1970, 1, 1))
-    fill_quotas: FillQuota = Field(..., description="Vacancy fill quota")
+    fill_quotas: List[FillQuota] = Field([], description="Vacancy fill quota")
     frame_id: int = Field(..., description="Vacancy frame ID", example=1)
     hidden: bool = Field(..., description="Hidden vacnacy flag", example=True)
     money: Optional[str] = Field(None, description="Salary for vacacny", example="100000")
