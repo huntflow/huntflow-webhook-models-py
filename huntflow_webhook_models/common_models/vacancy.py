@@ -59,9 +59,9 @@ class Vacancy(BaseModel):
         description="Vacancy conditions(HTML)",
         example="<p>Big salary</p>",
     )
-    created: datetime = Field(
+    created: date = Field(
         ...,
-        description="Date time the vacancy was created",
+        description="Date the vacancy was created",
         example=datetime(1970, 1, 1, 1, 1, 1),
     )
     deadline: Optional[date] = Field(..., description="Vacancy deadline", example=date(1970, 1, 1))
