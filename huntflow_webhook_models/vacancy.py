@@ -14,6 +14,6 @@ class VacancyEvent(BaseModel):
     vacancy_log: VacancyLog
 
 
-class ApplicantHookRequest(BaseHuntflowWebhookRequest):
+class VacancyHookRequest(BaseHuntflowWebhookRequest):
     event: VacancyEvent
     meta: VacancyHookRequestMeta

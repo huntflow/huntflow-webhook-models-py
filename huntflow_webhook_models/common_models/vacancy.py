@@ -88,9 +88,8 @@ class Vacancy(BaseModel):
 
 class VacancyLog(BaseModel):
     id: int = Field(..., description="Vacancy log ID", example=1)
-    type_: VacancyState = Field(
+    state: VacancyState = Field(
         ...,
-        alias="type",
         description="Vacancy log state",
         example=VacancyState.OPEN,
     )
@@ -99,8 +98,13 @@ class VacancyLog(BaseModel):
         description="Date time the vacancy log created",
         example=datetime(1970, 1, 1, 1, 1, 1),
     )
-    reason: Optional[str] = Field(
+    close_reason: Optional[str] = Field(
         None,
-        description="Vacancy rejection reason",
-        example="Do not take to work",
+        description="Vacancy close reason",
+        example="Just close",
+    )
+    hold_reason: Optional[str] = Field(
+        None,
+        description="Vacancy hold reason",
+        example="Just hold",
     )
