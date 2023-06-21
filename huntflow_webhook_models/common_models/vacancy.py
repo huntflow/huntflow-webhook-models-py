@@ -98,13 +98,4 @@ class VacancyLog(BaseModel):
         description="Date time the vacancy log created",
         example=datetime(1970, 1, 1, 1, 1, 1),
     )
-    close_reason: Optional[str] = Field(
-        None,
-        description="Vacancy close reason",
-        example="Just close",
-    )
-    hold_reason: Optional[str] = Field(
-        None,
-        description="Vacancy hold reason",
-        example="Just hold",
-    )
+    # TODO: Solve close reason field problem (field exists with another name)
