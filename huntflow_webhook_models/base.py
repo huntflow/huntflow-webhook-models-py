@@ -20,7 +20,7 @@ class Author(BaseModel):
 
 class WebhookMetaInfoBase(BaseModel):
     account: Account
-    author: Author
+    author: Optional[Author]
     event_type: WebhookEventType = Field(
         ...,
         description="Webhook event type",

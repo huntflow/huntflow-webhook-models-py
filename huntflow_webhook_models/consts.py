@@ -11,6 +11,10 @@ class WebhookEventType(str, Enum):
     SURVEY_QUESTIONARY = "SURVEY-QUESTIONARY"
 
 
+class CommonWebhookActionType(str, Enum):
+    ADD = "ADD"
+
+
 class ApplicantWebhookActionType(str, Enum):
     ADD = "ADD"
     EDIT = "EDIT"
@@ -53,6 +57,9 @@ class VacancyState(str, Enum):
     VACANCY_REQUEST_ATTACH = "VACANCY_REQUEST_ATTACH"
     RESUME = "RESUME"
     CREATED = "CREATED"
+    EDIT = "EDIT"
+    LEAVE = "LEAVE"
+    JOIN = "JOIN"
 
 
 class CalendarEventStatus(str, Enum):
