@@ -1,5 +1,6 @@
 from pydantic import BaseModel
-from huntflow_webhook_models.base import WebhookMetaInfoBase, BaseHuntflowWebhookRequest
+
+from huntflow_webhook_models.base import BaseHuntflowWebhookRequest, WebhookMetaInfoBase
 from huntflow_webhook_models.common_models.vacancy_request import VacancyRequest, VacancyRequestLog
 from huntflow_webhook_models.consts import CommonWebhookActionType
 
