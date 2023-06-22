@@ -62,6 +62,13 @@ class VacancyState(str, Enum):
     JOIN = "JOIN"
 
 
+class VacancyRequestLogAction(str, Enum):
+    CREATE = "CREATE"
+    EDIT = "EDIT"
+    REMOVE = "REMOVE"
+    MIGRATE = "MIGRATE"
+
+
 class CalendarEventStatus(str, Enum):
     accepted = "accepted"
     declined = "declined"
