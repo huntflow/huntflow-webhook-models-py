@@ -84,7 +84,7 @@ class Applicant(BaseModel):
 
 class Respondent(BaseModel):
     account_id: int = Field(..., description="Account ID", example=1)
-    custom_id: int = Field(..., description="Custom ID", example=1)
+    custom_id: Optional[int] = Field(None, description="Custom ID", example=1)
     name: Optional[str] = Field(None, description="Respondent name", example="John")
     email: str = Field(..., description="Respondent email", example="test@example.com")
 
