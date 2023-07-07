@@ -91,3 +91,17 @@ class CalendarEventType(str, Enum):
 class Transparency(str, Enum):
     busy = "busy"
     free = "free"
+
+
+class VacancyExternalPublishStatus(str, Enum):
+    QUEUED = "QUEUED"
+    PUBLISHED = "PUBLISHED"
+    UNPUBLISHED = "UNPUBLISHED"
+    FAILED = "FAILED"
+
+
+class ApplicantResponseExternalStatus(str, Enum):
+    HIDDEN = "HIDDEN"
+    CANCELLED = "CANCELLED"
+    TAKEN = "TAKEN"
+    REJECTED = "REJECTED"
