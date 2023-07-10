@@ -105,3 +105,9 @@ class ApplicantResponseExternalStatus(str, Enum):
     CANCELLED = "CANCELLED"
     TAKEN = "TAKEN"
     REJECTED = "REJECTED"
+
+
+class PrecisionTypes(str, Enum):
+    year = "year"
+    month = "month"
+    day = "day"

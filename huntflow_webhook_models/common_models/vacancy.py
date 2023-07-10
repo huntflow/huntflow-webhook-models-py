@@ -43,7 +43,7 @@ class Vacancy(BaseModel):
         description="Vacancy account division",
     )
     account_region: Optional[int] = Field(None, description="Vacancy region ID", example=1)
-    applicant_to_hire: Optional[int] = Field(
+    applicants_to_hire: Optional[int] = Field(
         None,
         description="Amount applicants to hire",
         example=1,
