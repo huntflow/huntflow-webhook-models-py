@@ -257,7 +257,7 @@ class Recommendation(BaseModel):
 
 class SimplePhoto(BaseModel):
     url: Optional[str] = Field(None, description="Photo url")
-    original: str = Field(None, description="Photo original")
+    original: Optional[str] = Field(None, description="Photo original")
 
 
 class Additional(BaseModel):
