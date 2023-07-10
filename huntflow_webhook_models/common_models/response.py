@@ -187,7 +187,7 @@ class Certificate(BaseModel):
     date: Optional[DateWithPrecision] = Field(None, description="Date of issue of the certificate")
 
 
-class ContactFullValue(BaseModel):
+class ContactPhone(BaseModel):
     country: str = Field()
     city: str = Field()
     number: str = Field()
@@ -202,7 +202,7 @@ class Contact(BaseModel):
         description="This is the preferred method of communication",
         example="true",
     )
-    full_value: Optional[ContactFullValue] = Field(
+    full_value: Optional[ContactPhone] = Field(
         None,
         description="If contact is a phone number - additional data about it",
     )
