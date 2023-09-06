@@ -57,8 +57,9 @@ class Conference(BaseModel):
         description="Conference end",
         examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
-    timezone: Optional[str] = Field(None, description="Conference timezone", examples=[
-        "Africa/Accra"])
+    timezone: Optional[str] = Field(
+        None, description="Conference timezone", examples=["Africa/Accra"],
+    )
     created: datetime = Field(
         ...,
         description="Conference creation datetime",
