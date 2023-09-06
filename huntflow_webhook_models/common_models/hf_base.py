@@ -14,7 +14,9 @@ class AccountInfo(BaseModel):
     id: int = Field(..., description="Account ID", examples=[1])
     name: str = Field(..., description="Account owner name", examples=["John"])
     email: Optional[str] = Field(
-        None, description="Account owner email", examples=["test@email.com"],
+        None,
+        description="Account owner email",
+        examples=["test@email.com"],
     )
 
 

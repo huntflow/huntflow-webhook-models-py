@@ -48,7 +48,9 @@ class DateWithPrecision(BaseModel):
     month: Optional[int] = Field(None, description="Month", examples=[12])
     day: Optional[int] = Field(None, description="Day", examples=[12])
     precision: PrecisionTypes = Field(
-        ..., description="Precision type", examples=[PrecisionTypes.day],
+        ...,
+        description="Precision type",
+        examples=[PrecisionTypes.day],
     )
 
 
@@ -84,7 +86,9 @@ class Specialization(ExternalEntity):
         examples=["external_10"],
     )
     prefarea_name: Optional[str] = Field(
-        None, description="Specialization name", examples=["Sales"],
+        None,
+        description="Specialization name",
+        examples=["Sales"],
     )
 
 
@@ -308,7 +312,9 @@ class Resume(BaseModel):
         description="List of recommendations",
     )
     has_vehicle: Optional[bool] = Field(
-        None, description="Ownership of vehicle", examples=["false"],
+        None,
+        description="Ownership of vehicle",
+        examples=["false"],
     )
     driver_license_types: Optional[List[str]] = Field(
         None,
@@ -342,7 +348,9 @@ class ApplicantExternalResponse(BaseModel):
         examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     foreign: str = Field(
-        ..., description="Foreign applicant external ID", examples=["external-9-23"],
+        ...,
+        description="Foreign applicant external ID",
+        examples=["external-9-23"],
     )
     resume: Optional[Resume] = Field(None, description="Applicant resume")
     state: Optional[ApplicantResponseExternalStatus] = Field(

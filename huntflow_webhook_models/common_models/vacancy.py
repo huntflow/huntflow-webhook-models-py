@@ -65,7 +65,9 @@ class Vacancy(BaseModel):
         examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     deadline: Optional[date] = Field(
-        None, description="Vacancy deadline", examples=[date(1970, 1, 1)],
+        None,
+        description="Vacancy deadline",
+        examples=[date(1970, 1, 1)],
     )
     fill_quotas: List[FillQuota] = Field([], description="Vacancy fill quota")
     frame_id: int = Field(..., description="Vacancy frame ID", examples=[1])

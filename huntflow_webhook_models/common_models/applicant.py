@@ -47,12 +47,16 @@ class ApplicantPhoto(AccountFile):
 class Applicant(BaseModel):
     id: int = Field(..., description="Applicant ID", examples=[1])
     email: Optional[str] = Field(
-        None, description="Applicant's email", examples=["email@example.com"],
+        None,
+        description="Applicant's email",
+        examples=["email@example.com"],
     )
     first_name: str = Field(..., description="Applicant's firstname", examples=["test_name"])
     last_name: str = Field(..., description="Applicant's lastname", examples=["test"])
     middle_name: Optional[str] = Field(
-        None, description="Applicant's patronymic", examples=["test"],
+        None,
+        description="Applicant's patronymic",
+        examples=["test"],
     )
     position: Optional[str] = Field(None, description="Applicant's current job", examples=["test"])
     birthday: Optional[date] = Field(
@@ -66,7 +70,9 @@ class Applicant(BaseModel):
         examples=["test"],
     )
     money: Optional[str] = Field(
-        None, description="Desired salary of the applicant", examples=["10$"],
+        None,
+        description="Desired salary of the applicant",
+        examples=["10$"],
     )
     phone: Optional[str] = Field(None, description="Applicant's phone", examples=["+99999999"])
     skype: Optional[str] = Field(None, description="Applicant's skype", examples=["test_skype"])
