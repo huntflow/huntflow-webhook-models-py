@@ -26,26 +26,26 @@ class Survey(BaseModel):
             "ui:placeholder": "answer here",
         },
     }
-    id: int = Field(..., description="Survey ID", example=1)
-    name: str = Field(..., description="Survey name", example="test")
+    id: int = Field(..., description="Survey ID", examples=[1])
+    name: str = Field(..., description="Survey name", examples=["test"])
     schema_: Dict[str, str] = Field(
         ...,
         alias="schema",
         description="Survey schema",
-        example=__survey_schema_example,
+        examples=[__survey_schema_example],
     )
     ui_schema: Dict[str, str] = Field(
         ...,
         description="UI schema",
-        example=__ui_schema_example,
+        examples=[__ui_schema_example],
     )
     created: datetime = Field(
         ...,
         description="Date time the survey was created",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     updated: Optional[datetime] = Field(
-        ...,
+        None,
         description="Date time the survey was updated",
         example=datetime(1970, 1, 1, 1, 1, 1),
     )

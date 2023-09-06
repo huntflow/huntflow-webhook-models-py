@@ -7,95 +7,96 @@ from huntflow_webhook_models.consts import VacancyState
 
 
 class FillQuota(BaseModel):
-    id: int = Field(..., description="Fill quota ID", example=1)
-    applicants_to_hire: int = Field(..., description="Amount of applicant to hire", example=1)
+    id: int = Field(..., description="Fill quota ID", examples=[1])
+    applicants_to_hire: int = Field(..., description="Amount of applicant to hire", examples=[1])
     closed: Optional[datetime] = Field(
         None,
         description="Date time the fill quota was closed",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     created: datetime = Field(
         ...,
         description="Date time the fill quota was created",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     deadline: Optional[date] = Field(
         None,
         description="Fill quota deadline",
-        example=date(1970, 1, 1),
+        examples=[date(1970, 1, 1)],
     )
     vacancy_request: Optional[int] = Field(
         None,
         description="Fill quota vacancy request",
-        example=1,
+        examples=[1],
     )
 
 
 class AccountDivision(BaseModel):
-    id: int = Field(..., description="Account division ID", example=1)
-    name: str = Field(..., description="Account division name", example="IT Department")
+    id: int = Field(..., description="Account division ID", examples=[1])
+    name: str = Field(..., description="Account division name", examples=["IT Department"])
 
 
 class Vacancy(BaseModel):
-    id: int = Field(..., description="Vacancy ID", example=1)
+    id: int = Field(..., description="Vacancy ID", examples=[1])
     account_division: Optional[AccountDivision] = Field(
         None,
         description="Vacancy account division",
     )
-    account_region: Optional[int] = Field(None, description="Vacancy region ID", example=1)
+    account_region: Optional[int] = Field(None, description="Vacancy region ID", examples=[1])
     applicants_to_hire: Optional[int] = Field(
         None,
         description="Amount applicants to hire",
-        example=1,
+        examples=[1],
     )
     body: Optional[str] = Field(
         None,
         description="Vacancy responsibilities (HTML)",
-        example="<p>Be happy</p>",
+        examples=["<p>Be happy</p>"],
     )
-    company: Optional[str] = Field(None, description="Vacancy company", example="Huntflow")
+    company: Optional[str] = Field(None, description="Vacancy company", examples=["Huntflow"])
     conditions: Optional[str] = Field(
         None,
         description="Vacancy conditions(HTML)",
-        example="<p>Big salary</p>",
+        examples=["<p>Big salary</p>"],
     )
     created: date = Field(
         ...,
         description="Date the vacancy was created",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
-    deadline: Optional[date] = Field(..., description="Vacancy deadline", example=date(1970, 1, 1))
+    deadline: Optional[date] = Field(None, description="Vacancy deadline", examples=[date(1970,
+                                                                                          1, 1)])
     fill_quotas: List[FillQuota] = Field([], description="Vacancy fill quota")
-    frame_id: int = Field(..., description="Vacancy frame ID", example=1)
-    hidden: bool = Field(..., description="Hidden vacancy flag", example=True)
-    money: Optional[str] = Field(None, description="Salary for vacancy", example="100000")
-    multiple: bool = Field(..., description="Multiple vacancy flag", example=False)
-    parent: Optional[int] = Field(None, description="Vacancy parent ID", example=1)
-    position: str = Field(..., description="Vacancy position", example="Python developer")
-    priority: int = Field(..., description="Vacancy priority", example=1)
+    frame_id: int = Field(..., description="Vacancy frame ID", examples=[1])
+    hidden: bool = Field(..., description="Hidden vacancy flag", examples=[True])
+    money: Optional[str] = Field(None, description="Salary for vacancy", examples=["100000"])
+    multiple: bool = Field(..., description="Multiple vacancy flag", examples=[False])
+    parent: Optional[int] = Field(None, description="Vacancy parent ID", examples=[1])
+    position: str = Field(..., description="Vacancy position", examples=["Python developer"])
+    priority: int = Field(..., description="Vacancy priority", examples=[1])
     requirements: Optional[str] = Field(
         None,
         description="vacancy requirements(HTML)",
-        example="<p>Work responsibly</p>",
+        examples=["<p>Work responsibly</p>"],
     )
-    state: VacancyState = Field(..., description="Vacancy state", example=VacancyState.OPEN)
+    state: VacancyState = Field(..., description="Vacancy state", examples=[VacancyState.OPEN])
     values: Dict = Field(
         {},
         description="Additional vacancy fields",
-        example={"experience": "without"},
+        examples=[{"experience": "without"}],
     )
 
 
 class VacancyLog(BaseModel):
-    id: int = Field(..., description="Vacancy log ID", example=1)
+    id: int = Field(..., description="Vacancy log ID", examples=[1])
     state: VacancyState = Field(
         ...,
         description="Vacancy log state",
-        example=VacancyState.OPEN,
+        examples=[VacancyState.OPEN],
     )
     created: datetime = Field(
         ...,
         description="Date time the vacancy log created",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     # TODO: Solve close reason field problem (field exists with another name)

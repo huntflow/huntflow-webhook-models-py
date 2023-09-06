@@ -134,15 +134,15 @@ class EducationInfoWithResult(BaseEducationInfo):
 
 class ExtendedEducationInfo(BaseEducationInfo):
     faculty: Optional[str] = Field(None, description="Faculty name", example="Mathematics")
-    form: Optional[ExternalEntity]
+    form: Optional[ExternalEntity] = None
 
 
 class Attestation(BaseModel):
-    date: Optional[DateWithPrecision]
-    name: Optional[str]
-    organization: Optional[str]
-    description: Optional[str]
-    result: Optional[str]
+    date: Optional[DateWithPrecision] = None
+    name: Optional[str] = None
+    organization: Optional[str] = None
+    description: Optional[str] = None
+    result: Optional[str] = None
 
 
 class Education(BaseModel):
@@ -229,11 +229,11 @@ class Military(BaseModel):
 
 
 class SocialRating(BaseModel):
-    kind: Optional[str]
-    stats: Optional[Any]
-    tags: Optional[List[str]]
-    url: Optional[str]
-    login: Optional[str]
+    kind: Optional[str] = None
+    stats: Optional[Any] = None
+    tags: Optional[List[str]] = None
+    url: Optional[str] = None
+    login: Optional[str] = None
     registered_at: Optional[str] = Field(None, description="ISO datetime")
 
 

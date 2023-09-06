@@ -15,22 +15,22 @@ class CalendarEventCreator(BaseModel):
     displayName: Optional[str] = Field(
         None,
         description="Event creator name",
-        example="John",
+        examples=["John"],
     )
-    email: str = Field(..., description="Event creator email", example="test@email.com")
+    email: str = Field(..., description="Event creator email", examples=["test@email.com"])
     self: Optional[bool] = Field(
         False,
         description="Flag indicating that you are the creator of the event",
-        example=False,
+        examples=[False],
     )
 
 
 class CalendarEventAttendee(BaseModel):
-    contact_id: Optional[int] = Field(None, description="Attendee contact ID", example=1)
-    displayName: Optional[str] = Field(None, description="Attendee display name", example="John")
-    email: Optional[str] = Field(None, description="Attendee email", example="test@email.com")
-    member: Optional[int] = Field(None, description="Coworker ID", example=1)
-    name: Optional[str] = Field(None, description="Attendee name", example="John")
+    contact_id: Optional[int] = Field(None, description="Attendee contact ID", examples=[1])
+    displayName: Optional[str] = Field(None, description="Attendee display name", examples=["John"])
+    email: Optional[str] = Field(None, description="Attendee email", eexamples=["test@email.com"])
+    member: Optional[int] = Field(None, description="Coworker ID", examples=[1])
+    name: Optional[str] = Field(None, description="Attendee name", examples=["John"])
     order: Optional[int] = Field(None, description="Attendee order", example=1)
     resource: bool = Field(..., description="Attendee resource flag", example=False)
     responseStatus: Optional[CalendarEventStatus] = Field(
