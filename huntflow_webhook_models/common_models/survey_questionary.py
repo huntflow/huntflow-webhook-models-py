@@ -26,65 +26,65 @@ class Survey(BaseModel):
             "ui:placeholder": "answer here",
         },
     }
-    id: int = Field(..., description="Survey ID", example=1)
-    name: str = Field(..., description="Survey name", example="test")
+    id: int = Field(..., description="Survey ID", examples=[1])
+    name: str = Field(..., description="Survey name", examples=["test"])
     schema_: Dict[str, str] = Field(
         ...,
         alias="schema",
         description="Survey schema",
-        example=__survey_schema_example,
+        examples=[__survey_schema_example],
     )
     ui_schema: Dict[str, str] = Field(
         ...,
         description="UI schema",
-        example=__ui_schema_example,
+        examples=[__ui_schema_example],
     )
     created: datetime = Field(
         ...,
         description="Date time the survey was created",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     updated: Optional[datetime] = Field(
-        ...,
+        None,
         description="Date time the survey was updated",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
-    title: str = Field(..., description="Survey title", example="Test")
-    active: bool = Field(..., description="Active flag", example=False)
+    title: str = Field(..., description="Survey title", examples=["Test"])
+    active: bool = Field(..., description="Active flag", examples=[False])
     type: str = Field("type_q", description="Survey type (always type_q)")
 
 
 class Respondent(BaseModel):
-    applicant_id: int = Field(..., description="Applicant ID", example=1)
-    name: str = Field(..., description="Applciant name", example="John")
+    applicant_id: int = Field(..., description="Applicant ID", examples=[1])
+    name: str = Field(..., description="Applicant name", examples=["John"])
 
 
 class CreatedBy(BaseModel):
-    account_id: int = Field(..., description="Account ID", example=1)
-    name: str = Field(..., description="Creator name", example="John")
+    account_id: int = Field(..., description="Account ID", examples=[1])
+    name: str = Field(..., description="Creator name", examples=["John"])
 
 
 class Answer(BaseModel):
-    id: int = Field(..., description="Answer ID", example=1)
+    id: int = Field(..., description="Answer ID", examples=[1])
     created: datetime = Field(
         ...,
         description="Answer date time",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     data: Dict[str, str] = Field(
         {},
         description="Answer data",
-        example={"d4hm5pRsbXPEQUSyiqXJA": "Applicant's smart answer"},
+        examples=[{"d4hm5pRsbXPEQUSyiqXJA": "Applicant's smart answer"}],
     )
 
 
 class SurveyQuestionary(BaseModel):
-    id: int = Field(..., description="Survey questionary ID", example=1)
+    id: int = Field(..., description="Survey questionary ID", examples=[1])
     survey: Survey
     created: datetime = Field(
         ...,
         description="Date time the survey questionary was created",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     respondent: Respondent
     created_by: CreatedBy
@@ -92,5 +92,5 @@ class SurveyQuestionary(BaseModel):
     link: str = Field(
         ...,
         description="Survey link",
-        example="https://survey-questionary/link",
+        examples=["https://survey-questionary/link"],
     )

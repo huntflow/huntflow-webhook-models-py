@@ -42,6 +42,7 @@ class AgreementState(str, Enum):
     SENT = "sent"
     ACCEPTED = "accepted"
     DECLINED = "declined"
+    SEND_ERROR = "send_error"
 
 
 class SurveyType(str, Enum):

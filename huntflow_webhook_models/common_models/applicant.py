@@ -11,14 +11,14 @@ from huntflow_webhook_models.consts import AgreementState, ApplicantLogType, Sur
 
 
 class ApplicantSocial(BaseModel):
-    id: int = Field(..., description="Social ID", example=1)
-    social_type: str = Field(..., description="Social type", example="TELEGRAM")
-    value: str = Field(..., description="Social nick/email", example="test_tg")
-    verified: bool = Field(..., description="Verification flag", example=True)
+    id: int = Field(..., description="Social ID", examples=[1])
+    social_type: str = Field(..., description="Social type", examples=["TELEGRAM"])
+    value: str = Field(..., description="Social nick/email", examples=["test_tg"])
+    verified: bool = Field(..., description="Verification flag", examples=[True])
     verification_date: Optional[datetime] = Field(
         None,
         description="Verification datetime",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
 
 
@@ -26,18 +26,18 @@ class ApplicantPDAgreement(BaseModel):
     state: Optional[AgreementState] = Field(
         None,
         description="Agreement state",
-        example=AgreementState.NOT_SENT,
+        examples=[AgreementState.NOT_SENT],
     )
     decision_date: Optional[datetime] = Field(
         None,
         description="Decision date",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
 
 
 class VacancyApplicantStatus(BaseModel):
-    id: int = Field(..., description="Status ID", example=1)
-    name: str = Field(..., description="Status name", example="hired")
+    id: int = Field(..., description="Status ID", examples=[1])
+    name: str = Field(..., description="Status name", examples=["hired"])
 
 
 class ApplicantPhoto(AccountFile):
@@ -45,31 +45,43 @@ class ApplicantPhoto(AccountFile):
 
 
 class Applicant(BaseModel):
-    id: int = Field(..., description="Applicant ID", example=1)
-    email: Optional[str] = Field(None, description="Applicant's email", example="email@example.com")
-    first_name: str = Field(..., description="Applicant's firstname", example="test_name")
-    last_name: str = Field(..., description="Applicant's lastname", example="test")
-    middle_name: Optional[str] = Field(None, description="Applicant's patronymic", example="test")
-    position: Optional[str] = Field(None, description="Applicant's current job", example="test")
+    id: int = Field(..., description="Applicant ID", examples=[1])
+    email: Optional[str] = Field(
+        None,
+        description="Applicant's email",
+        examples=["email@example.com"],
+    )
+    first_name: str = Field(..., description="Applicant's firstname", examples=["test_name"])
+    last_name: str = Field(..., description="Applicant's lastname", examples=["test"])
+    middle_name: Optional[str] = Field(
+        None,
+        description="Applicant's patronymic",
+        examples=["test"],
+    )
+    position: Optional[str] = Field(None, description="Applicant's current job", examples=["test"])
     birthday: Optional[date] = Field(
         None,
         description="Applicant's birthday",
-        example=date(1970, 1, 1),
+        examples=[date(1970, 1, 1)],
     )
     company: Optional[str] = Field(
         None,
         description="Last company the applicant worked for",
-        example="test",
+        examples=["test"],
     )
-    money: Optional[str] = Field(None, description="Desired salary of the applicant", example="10$")
-    phone: Optional[str] = Field(None, description="Applicant's phone", example="+99999999")
-    skype: Optional[str] = Field(None, description="Applicant's skype", example="test_skype")
+    money: Optional[str] = Field(
+        None,
+        description="Desired salary of the applicant",
+        examples=["10$"],
+    )
+    phone: Optional[str] = Field(None, description="Applicant's phone", examples=["+99999999"])
+    skype: Optional[str] = Field(None, description="Applicant's skype", examples=["test_skype"])
     photo: Optional[ApplicantPhoto] = Field(None, description="Applicant's photo")
     social: List[ApplicantSocial] = Field([], description="Applicant social media list")
     questionary: Optional[datetime] = Field(
         None,
         description="Date of filling / changing additional information",
-        example=datetime(1970, 1, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1, 1)],
     )
     pd_agreement: Optional[ApplicantPDAgreement] = Field(
         None,
@@ -78,85 +90,85 @@ class Applicant(BaseModel):
     values: Optional[Dict[str, Any]] = Field(
         None,
         description="Additional applicant fields",
-        example={"favorite_language": "python"},
+        examples=[{"favorite_language": "python"}],
     )
 
 
 class Respondent(BaseModel):
-    account_id: int = Field(..., description="Account ID", example=1)
-    custom_id: Optional[int] = Field(None, description="Custom ID", example=1)
-    name: Optional[str] = Field(None, description="Respondent name", example="John")
-    email: str = Field(..., description="Respondent email", example="test@example.com")
+    account_id: int = Field(..., description="Account ID", examples=[1])
+    custom_id: Optional[int] = Field(None, description="Custom ID", examples=[1])
+    name: Optional[str] = Field(None, description="Respondent name", examples=["John"])
+    email: str = Field(..., description="Respondent email", examples=["test@example.com"])
 
 
 class Survey(BaseModel):
-    id: int = Field(..., description="Survey ID", example=1)
-    name: str = Field(..., description="Survey name", example="test")
-    type: SurveyType = Field(..., description="Survey type", example=SurveyType.TYPE_A)
+    id: int = Field(..., description="Survey ID", examples=[1])
+    name: str = Field(..., description="Survey name", examples=["test"])
+    type: SurveyType = Field(..., description="Survey type", examples=[SurveyType.TYPE_A])
     created: datetime = Field(
         ...,
         description="Date the survey was created",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     updated: Optional[datetime] = Field(
         None,
         description="Date the survey was changed",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
-    active: bool = Field(..., description="Active flag", example=True)
+    active: bool = Field(..., description="Active flag", examples=[True])
 
 
 class SurveyAnswerOfTypeA(BaseModel):
-    id: int = Field(..., description="Survey answer ID", example=1)
+    id: int = Field(..., description="Survey answer ID", examples=[1])
     respondent: Respondent
     survey: Survey
     created: datetime = Field(
         ...,
         description="Date of the questionnaire",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     updated: Optional[datetime] = Field(
-        ...,
+        None,
         description="Date the questionnaire was modified",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     values: Optional[Dict[str, Any]] = Field(
         None,
         description="Survey results",
-        example={"question": "answer"},
+        examples=[{"question": "answer"}],
     )
 
 
 class RejectionReason(BaseModel):
-    id: int = Field(..., description="Rejection reason ID", example=1)
-    name: str = Field(..., description="Rejection reason name", example="Too far")
+    id: int = Field(..., description="Rejection reason ID", examples=[1])
+    name: str = Field(..., description="Rejection reason name", examples=["Too far"])
 
 
 class ApplicantLog(BaseModel):
-    id: int = Field(..., description="Applicant log ID", example=1)
+    id: int = Field(..., description="Applicant log ID", examples=[1])
     type: ApplicantLogType = Field(
         ...,
         description="Applicant log type",
-        example=ApplicantLogType.STATUS,
+        examples=[ApplicantLogType.STATUS],
     )
     status: Optional[VacancyApplicantStatus] = None
     employment_date: Optional[date] = Field(
         None,
         description="Applicant employment date",
-        example=date(1970, 1, 1),
+        examples=[date(1970, 1, 1)],
     )
     removed: Optional[datetime] = Field(
         None,
         description="Record delete date time",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
-    comment: Optional[str] = Field(None, description="Comment", example="comment")
+    comment: Optional[str] = Field(None, description="Comment", examples=["comment"])
     created: datetime = Field(
         ...,
         description="Log creation date time",
-        example=datetime(1970, 1, 1, 1, 1, 1),
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
-    source: Optional[str]
+    source: Optional[str] = None
     files: List[AccountFile] = Field([], description="List of uploaded files")
     survey_answer_of_type_a: Optional[SurveyAnswerOfTypeA] = None
     rejection_reason: Optional[RejectionReason] = None
@@ -166,6 +178,6 @@ class ApplicantLog(BaseModel):
 
 
 class ApplicantTag(BaseModel):
-    id: int = Field(..., description="Tag ID", example=1)
-    name: str = Field(..., description="Tag name", example="COOL")
-    color: str = Field(..., description="Tag color", example="000000")
+    id: int = Field(..., description="Tag ID", examples=[1])
+    name: str = Field(..., description="Tag name", examples=["COOL"])
+    color: str = Field(..., description="Tag color", examples=["000000"])
