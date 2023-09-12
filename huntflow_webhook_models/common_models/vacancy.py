@@ -47,7 +47,7 @@ class Vacancy(BaseModel):
         None,
         description="Vacancy account division",
     )
-    account_region: Optional[AccountRegion]
+    account_region: Optional[AccountRegion] = Field(None, description="Account region")
     applicants_to_hire: Optional[int] = Field(
         None,
         description="Amount applicants to hire",
