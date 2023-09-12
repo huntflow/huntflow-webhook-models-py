@@ -17,7 +17,10 @@ class AccountApplicantOfferLog(BaseModel):
 
 class ApplicantOffer(BaseModel):
     id: int = Field(..., description="Offer ID", examples=[1])
-    account_applicant_offer_log: AccountApplicantOfferLog
+    account_applicant_offer_log: AccountApplicantOfferLog = Field(
+        None,
+        description="Account applicant offer log",
+    )
     applicant_offer_id: int = Field(..., description="Applicant offer ID", examples=[1])
     created: datetime = Field(
         ...,
