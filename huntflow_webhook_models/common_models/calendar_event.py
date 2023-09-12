@@ -28,7 +28,7 @@ class CalendarEventCreator(BaseModel):
 class CalendarEventAttendee(BaseModel):
     contact_id: Optional[int] = Field(None, description="Attendee contact ID", examples=[1])
     displayName: Optional[str] = Field(None, description="Attendee display name", examples=["John"])
-    email: Optional[str] = Field(None, description="Attendee email", eexamples=["test@email.com"])
+    email: Optional[str] = Field(None, description="Attendee email", examples=["test@email.com"])
     member: Optional[int] = Field(None, description="Coworker ID", examples=[1])
     name: Optional[str] = Field(None, description="Attendee name", examples=["John"])
     order: Optional[int] = Field(None, description="Attendee order", examples=[1])

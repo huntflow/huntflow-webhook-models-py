@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field
 
 
 class AccountFile(BaseModel):
-    id: int = Field(..., description="File ID", exmple=1)
+    id: int = Field(..., description="File ID", examples=[1])
     content_type: str = Field(..., description="MIME type", examples=["image/jpeg"])
     name: str = Field(..., description="Filename", examples=["test_file.jpeg"])
     url: str = Field(..., description="File url", examples=["https://domain/file/1"])
