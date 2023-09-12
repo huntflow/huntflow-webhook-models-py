@@ -112,3 +112,8 @@ class PrecisionTypes(str, Enum):
     year = "year"
     month = "month"
     day = "day"
+
+
+class ApplicantOfferLogTypes(str, Enum):
+    ADD = "ADD"
+    EDIT = "EDIT"
