@@ -31,6 +31,11 @@ class FillQuota(BaseModel):
     )
 
 
+class AccountRegion(BaseModel):
+    id: int = Field(..., description="Account region ID", examples=[1])
+    name: str = Field(..., description="Account region name", examples=["Turkey"])
+
+
 class AccountDivision(BaseModel):
     id: int = Field(..., description="Account division ID", examples=[1])
     name: str = Field(..., description="Account division name", examples=["IT Department"])
@@ -42,7 +47,7 @@ class Vacancy(BaseModel):
         None,
         description="Vacancy account division",
     )
-    account_region: Optional[int] = Field(None, description="Vacancy region ID", examples=[1])
+    account_region: Optional[AccountRegion]
     applicants_to_hire: Optional[int] = Field(
         None,
         description="Amount applicants to hire",
