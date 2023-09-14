@@ -21,6 +21,12 @@ class ApplicantWebhookActionType(str, Enum):
     DELETE = "DELETE"
 
 
+class RecruitmentEvaluationWebhookActionType(str, Enum):
+    ADD = "ADD"
+    EDIT = "EDIT"
+    DELETE = "DELETE"
+
+
 class ApplicantLogType(str, Enum):
     ADD = "ADD"
     UPDATE = "UPDATE"
@@ -112,6 +118,12 @@ class PrecisionTypes(str, Enum):
     year = "year"
     month = "month"
     day = "day"
+
+
+class SurveyAnswerRequestState(str, Enum):
+    NOT_SENT = "NOT_SENT"
+    SENT = "SENT"
+    FAILED = "FAILED"
 
 
 class ApplicantOfferLogTypes(str, Enum):
