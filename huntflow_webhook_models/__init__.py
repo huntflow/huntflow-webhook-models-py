@@ -1,5 +1,6 @@
 from . import consts
 from .applicant import ApplicantHookRequest
+from .offer import OfferHookRequest
 from .vacancy import VacancyHookRequest
 from .vacancy_request import VacancyRequestHookRequest
 
@@ -8,4 +9,5 @@ __all__ = [
     "ApplicantHookRequest",
     "VacancyHookRequest",
     "VacancyRequestHookRequest",
+    "OfferHookRequest",
 ]

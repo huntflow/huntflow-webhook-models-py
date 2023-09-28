@@ -75,7 +75,7 @@ class Conference(BaseModel):
     foreign: Optional[str] = Field(
         None,
         description="Foreign conference ID",
-        eexamples=["conference_id"],
+        examples=["conference_id"],
     )
     link: Optional[str] = Field(
         None,
