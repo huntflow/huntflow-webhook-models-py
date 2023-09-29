@@ -28,6 +28,7 @@ class WebhookMetaInfoBase(BaseModel):
     )
     version: str = Field(..., description="Webhook version", examples=["2.0"])
     retry: int = Field(..., description="Webhook retry count", examples=[1])
+    event_id: str = Field(..., description="Event ID", examples=["1"])
 
 
 class BaseHuntflowWebhookRequest(BaseModel):
