@@ -21,7 +21,7 @@ class ApplicantOffer(BaseModel):
         ...,
         description="Account applicant offer log",
     )
-    applicant_offer_id: int = Field(..., description="Applicant offer ID", examples=[1])
+    applicant_offer_id: int = Field(..., description="Account applicant offer ID", examples=[1])
     created: datetime = Field(
         ...,
         description="Date time the offer was created",
