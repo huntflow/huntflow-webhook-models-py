@@ -21,12 +21,6 @@ class ApplicantWebhookActionType(str, Enum):
     DELETE = "DELETE"
 
 
-class RecruitmentEvaluationWebhookActionType(str, Enum):
-    ADD = "ADD"
-    EDIT = "EDIT"
-    DELETE = "DELETE"
-
-
 class ApplicantLogType(str, Enum):
     ADD = "ADD"
     UPDATE = "UPDATE"
