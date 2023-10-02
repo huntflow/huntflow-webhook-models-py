@@ -114,6 +114,12 @@ class PrecisionTypes(str, Enum):
     day = "day"
 
 
+class SurveyAnswerRequestState(str, Enum):
+    NOT_SENT = "NOT_SENT"
+    SENT = "SENT"
+    FAILED = "FAILED"
+
+
 class ApplicantOfferLogTypes(str, Enum):
     ADD = "ADD"
     EDIT = "EDIT"
