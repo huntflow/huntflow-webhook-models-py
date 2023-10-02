@@ -27,10 +27,10 @@ class SurveySchema(BaseModel):
 
 
 class AccountSurvey(BaseModel):
-    id: int = Field(..., description="Hiring evaluation survey ID", examples=[1])
+    id: int = Field(..., description="Recruitment evaluation survey ID", examples=[1])
     name: str = Field(
         ...,
-        description="Survey name recruitment evaluation",
+        description="Recruitment evaluation survey name ",
         examples=["Recruitment evaluation"],
     )
     schema_: SurveySchema = Field(

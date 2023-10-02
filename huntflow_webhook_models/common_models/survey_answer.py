@@ -34,7 +34,7 @@ class SurveyAnswerData(BaseModel):
 
 
 class SurveyAnswer(BaseModel):
-    id: int = Field(..., description="Recruitment evaluation request answer ID", examples=[1])
+    id: int = Field(..., description="Recruitment evaluation answer ID", examples=[1])
     respondent: SurveyAnswerRespondent = Field(..., description="Respondent")
     created: datetime = Field(
         ...,
