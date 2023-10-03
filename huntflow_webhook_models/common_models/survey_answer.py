@@ -9,7 +9,7 @@ from huntflow_webhook_models.consts import SurveyAnswerRequestState
 class SurveyAnswerRespondent(BaseModel):
     id: int = Field(..., description="Respondent ID", examples=[1])
     account_id: Optional[int] = Field(None, description="Respondent account ID", examples=[1])
-    custom_id: Optional[int] = Field(
+    custom_id: Optional[str] = Field(
         None,
         description="Respondent account ID in external system",
         examples=["123"],

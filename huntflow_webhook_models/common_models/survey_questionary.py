@@ -51,7 +51,7 @@ class Survey(BaseModel):
     )
     title: str = Field(..., description="Survey title", examples=["Test"])
     active: bool = Field(..., description="Active flag", examples=[False])
-    type: str = Field("type_q", description="Survey type (always type_q)")
+    type: str = Field("type_q", description="Survey type (always type_q)", examples=["type_q"])
 
 
 class Respondent(BaseModel):

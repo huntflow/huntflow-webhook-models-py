@@ -69,9 +69,11 @@ class PersonalInfo(BaseModel):
 
 
 class ExternalEntity(BaseModel):
-    id: Optional[Union[int, str]] = Field(None, description="Entity ID in Huntflow system")
-    external_id: Optional[str] = Field(None, description="Entity external ID")
-    name: Optional[str] = Field(None, description="Entity name")
+    id: Optional[Union[int, str]] = Field(
+        None, description="Entity ID in Huntflow system", examples=[1],
+    )
+    external_id: Optional[str] = Field(None, description="Entity external ID", examples=["1"])
+    name: Optional[str] = Field(None, description="Entity name", examples=["name"])
 
 
 class Specialization(ExternalEntity):
@@ -142,15 +144,23 @@ class EducationInfoWithResult(BaseEducationInfo):
 
 class ExtendedEducationInfo(BaseEducationInfo):
     faculty: Optional[str] = Field(None, description="Faculty name", examples=["Mathematics"])
-    form: Optional[ExternalEntity] = None
+    form: Optional[ExternalEntity] = Field(None, description="Education form data")
 
 
 class Attestation(BaseModel):
-    date: Optional[DateWithPrecision] = None
-    name: Optional[str] = None
-    organization: Optional[str] = None
-    description: Optional[str] = None
-    result: Optional[str] = None
+    date: Optional[DateWithPrecision] = Field(None, description="Attestation date")
+    name: Optional[str] = Field(None, description="Attestation name", examples=["name"])
+    organization: Optional[str] = Field(
+        None,
+        description="Attestation organization",
+        examples=["organization"],
+    )
+    description: Optional[str] = Field(
+        None,
+        description="Attestation description",
+        examples=["description"],
+    )
+    result: Optional[str] = Field(None, description="Attestation result", examples=["resukt"])
 
 
 class Education(BaseModel):
@@ -196,10 +206,10 @@ class Certificate(BaseModel):
 
 
 class ContactPhone(BaseModel):
-    country: str = Field()
-    city: str = Field()
-    number: str = Field()
-    formatted: str = Field()
+    country: str = Field(..., description="Contact phone country", examples=["Japan"])
+    city: str = Field(..., description="Contact phone city", examples=["Tokyo"])
+    number: str = Field(..., description="Contact phone number", examples=["+ 1 999 888-77-66"])
+    formatted: str = Field(..., description="Contact phone format", examples=["+1 (XXX) XXX-XX-XX"])
 
 
 class Contact(BaseModel):
@@ -237,23 +247,23 @@ class Military(BaseModel):
 
 
 class SocialRating(BaseModel):
-    kind: Optional[str] = None
-    stats: Optional[Any] = None
-    tags: Optional[List[str]] = None
-    url: Optional[str] = None
-    login: Optional[str] = None
+    kind: Optional[str] = Field(None, description="Social rating kind", examples=["Some kind"])
+    stats: Optional[Any] = Field(None, description="Social rating stats", examples=["1"])
+    tags: Optional[List[str]] = Field(None, description="Social rating stats", examples=[["tag1"]])
+    url: Optional[str] = Field(None, description="Social rating url", examples=["https://url"])
+    login: Optional[str] = Field(None, description="Social rating login", examples=["login"])
     registered_at: Optional[str] = Field(None, description="ISO datetime")
 
 
 class Salary(BaseModel):
-    amount: Optional[float] = Field(None, description="Salary amount")
-    currency: Optional[str] = Field(None, description="Salary currency")
+    amount: Optional[float] = Field(None, description="Salary amount", examples=[100.0])
+    currency: Optional[str] = Field(None, description="Salary currency", examples=["USD"])
 
 
 class Recommendation(BaseModel):
-    value: Optional[str] = Field(None, description="Recommendation")
+    value: Optional[str] = Field(None, description="Recommendation", examples=["Nice"])
     date: Optional[DateWithPrecision] = Field(None, description="Date of recommendation")
-    name: Optional[str] = Field(None, description="Name to whom recommendation")
+    name: Optional[str] = Field(None, description="Name to whom recommendation", examples=["John"])
     position: Optional[str] = Field(None, description="Position", examples=["Manager"])
     organization: Optional[str] = Field(
         None,
@@ -264,13 +274,15 @@ class Recommendation(BaseModel):
 
 
 class SimplePhoto(BaseModel):
-    url: Optional[str] = Field(None, description="Photo url")
-    original: Optional[str] = Field(None, description="Photo original")
+    url: Optional[str] = Field(None, description="Photo url", examples=["https://url"])
+    original: Optional[str] = Field(None, description="Photo original", examples=["photo"])
 
 
 class Additional(BaseModel):
-    name: Optional[str] = Field(None, description="Name of additional info")
-    description: Optional[str] = Field(None, description="Description of additional info")
+    name: Optional[str] = Field(None, description="Name of additional info", examples=["name"])
+    description: Optional[str] = Field(
+        None, description="Description of additional info", examples=["description"],
+    )
 
 
 class Resume(BaseModel):
@@ -314,7 +326,7 @@ class Resume(BaseModel):
     has_vehicle: Optional[bool] = Field(
         None,
         description="Ownership of vehicle",
-        examples=["false"],
+        examples=[False],
     )
     driver_license_types: Optional[List[str]] = Field(
         None,

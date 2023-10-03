@@ -120,8 +120,8 @@ class Survey(BaseModel):
 
 class SurveyAnswerOfTypeA(BaseModel):
     id: int = Field(..., description="Survey answer ID", examples=[1])
-    respondent: Respondent
-    survey: Survey
+    respondent: Respondent = Field(..., description="Survey respondent data")
+    survey: Survey = Field(..., description="Survey data")
     created: datetime = Field(
         ...,
         description="Date of the questionnaire",
@@ -170,11 +170,23 @@ class ApplicantLog(BaseModel):
     )
     source: Optional[str] = None
     files: List[AccountFile] = Field([], description="List of uploaded files")
-    survey_answer_of_type_a: Optional[SurveyAnswerOfTypeA] = None
-    rejection_reason: Optional[RejectionReason] = None
-    survey_questionary: Optional[SurveyQuestionary] = None
-    calendar_event: Optional[ApplicantLogCalendarEvent] = None
-    vacancy: Optional[Vacancy] = None
+    survey_answer_of_type_a: Optional[SurveyAnswerOfTypeA] = Field(
+        None,
+        description="Applicant's survey questionary",
+    )
+    rejection_reason: Optional[RejectionReason] = Field(
+        None,
+        description="Rejection reason of a candidate for a vacancy",
+    )
+    survey_questionary: Optional[SurveyQuestionary] = Field(
+        None,
+        description="Applicant's survey questionary",
+    )
+    calendar_event: Optional[ApplicantLogCalendarEvent] = Field(
+        None,
+        description="Applicant's calendar event data",
+    )
+    vacancy: Optional[Vacancy] = Field(None, description="Applicant's vacancy data")
 
 
 class ApplicantTag(BaseModel):
