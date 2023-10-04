@@ -70,7 +70,9 @@ class PersonalInfo(BaseModel):
 
 class ExternalEntity(BaseModel):
     id: Optional[Union[int, str]] = Field(
-        None, description="Entity ID in Huntflow system", examples=[1],
+        None,
+        description="Entity ID in Huntflow system",
+        examples=[1],
     )
     external_id: Optional[str] = Field(None, description="Entity external ID", examples=["1"])
     name: Optional[str] = Field(None, description="Entity name", examples=["name"])
@@ -281,7 +283,9 @@ class SimplePhoto(BaseModel):
 class Additional(BaseModel):
     name: Optional[str] = Field(None, description="Name of additional info", examples=["name"])
     description: Optional[str] = Field(
-        None, description="Description of additional info", examples=["description"],
+        None,
+        description="Description of additional info",
+        examples=["description"],
     )
 
 
