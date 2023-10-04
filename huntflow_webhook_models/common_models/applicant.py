@@ -89,7 +89,7 @@ class Applicant(BaseModel):
     )
     values: Optional[Dict[str, Any]] = Field(
         None,
-        description="Additional applicant fields",
+        description="Additional fields",
         examples=[{"favorite_language": "python"}],
     )
 
@@ -154,7 +154,7 @@ class ApplicantLog(BaseModel):
     status: Optional[VacancyApplicantStatus] = None
     employment_date: Optional[date] = Field(
         None,
-        description="Applicant employment date",
+        description="Employment date",
         examples=[date(1970, 1, 1)],
     )
     removed: Optional[datetime] = Field(
@@ -172,21 +172,21 @@ class ApplicantLog(BaseModel):
     files: List[AccountFile] = Field([], description="List of uploaded files")
     survey_answer_of_type_a: Optional[SurveyAnswerOfTypeA] = Field(
         None,
-        description="Applicant's survey questionary",
+        description="Survey questionary data",
     )
     rejection_reason: Optional[RejectionReason] = Field(
         None,
-        description="Rejection reason of a candidate for a vacancy",
+        description="Rejection reason data",
     )
     survey_questionary: Optional[SurveyQuestionary] = Field(
         None,
-        description="Applicant's survey questionary",
+        description="Survey questionary data",
     )
     calendar_event: Optional[ApplicantLogCalendarEvent] = Field(
         None,
-        description="Applicant's calendar event data",
+        description="Calendar event data",
     )
-    vacancy: Optional[Vacancy] = Field(None, description="Applicant's vacancy data")
+    vacancy: Optional[Vacancy] = Field(None, description="Vacancy data")
 
 
 class ApplicantTag(BaseModel):
