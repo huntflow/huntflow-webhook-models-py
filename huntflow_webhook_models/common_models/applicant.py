@@ -89,7 +89,7 @@ class Applicant(BaseModel):
     )
     values: Optional[Dict[str, Any]] = Field(
         None,
-        description="Additional applicant fields",
+        description="Additional fields",
         examples=[{"favorite_language": "python"}],
     )
 
@@ -120,8 +120,8 @@ class Survey(BaseModel):
 
 class SurveyAnswerOfTypeA(BaseModel):
     id: int = Field(..., description="Survey answer ID", examples=[1])
-    respondent: Respondent
-    survey: Survey
+    respondent: Respondent = Field(..., description="Survey respondent data")
+    survey: Survey = Field(..., description="Survey data")
     created: datetime = Field(
         ...,
         description="Date of the questionnaire",
@@ -154,7 +154,7 @@ class ApplicantLog(BaseModel):
     status: Optional[VacancyApplicantStatus] = None
     employment_date: Optional[date] = Field(
         None,
-        description="Applicant employment date",
+        description="Employment date",
         examples=[date(1970, 1, 1)],
     )
     removed: Optional[datetime] = Field(
@@ -170,11 +170,23 @@ class ApplicantLog(BaseModel):
     )
     source: Optional[str] = None
     files: List[AccountFile] = Field([], description="List of uploaded files")
-    survey_answer_of_type_a: Optional[SurveyAnswerOfTypeA] = None
-    rejection_reason: Optional[RejectionReason] = None
-    survey_questionary: Optional[SurveyQuestionary] = None
-    calendar_event: Optional[ApplicantLogCalendarEvent] = None
-    vacancy: Optional[Vacancy] = None
+    survey_answer_of_type_a: Optional[SurveyAnswerOfTypeA] = Field(
+        None,
+        description="Survey questionary data",
+    )
+    rejection_reason: Optional[RejectionReason] = Field(
+        None,
+        description="Rejection reason data",
+    )
+    survey_questionary: Optional[SurveyQuestionary] = Field(
+        None,
+        description="Survey questionary data",
+    )
+    calendar_event: Optional[ApplicantLogCalendarEvent] = Field(
+        None,
+        description="Calendar event data",
+    )
+    vacancy: Optional[Vacancy] = Field(None, description="Vacancy data")
 
 
 class ApplicantTag(BaseModel):
