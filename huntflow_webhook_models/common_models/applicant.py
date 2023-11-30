@@ -51,8 +51,12 @@ class Applicant(BaseModel):
         description="Applicant's email",
         examples=["email@example.com"],
     )
-    first_name: str = Field(..., description="Applicant's firstname", examples=["test_name"])
-    last_name: str = Field(..., description="Applicant's lastname", examples=["test"])
+    first_name: Optional[str] = Field(
+        None,
+        description="Applicant's firstname",
+        examples=["test_name"],
+    )
+    last_name: Optional[str] = Field(None, description="Applicant's lastname", examples=["test"])
     middle_name: Optional[str] = Field(
         None,
         description="Applicant's patronymic",
