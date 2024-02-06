@@ -5,6 +5,7 @@ from .recruitment_evaluation import RecruitmentEvaluationHookRequest
 from .survey_questionary import SurveyQuestionaryHookRequest
 from .vacancy import VacancyHookRequest
 from .vacancy_request import VacancyRequestHookRequest
+from .response import ResponseHookRequest
 
 __all__ = [
     "consts",
@@ -13,5 +14,6 @@ __all__ = [
     "VacancyRequestHookRequest",
     "OfferHookRequest",
     "RecruitmentEvaluationHookRequest",
+    "ResponseHookRequest",
     "SurveyQuestionaryHookRequest",
 ]
