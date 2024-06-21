@@ -8,7 +8,11 @@ from huntflow_webhook_models.consts import CommonWebhookActionType
 
 
 class SurveyQuestionaryHookRequestMeta(WebhookMetaInfoBase):
-    webhook_action: CommonWebhookActionType
+    webhook_action: CommonWebhookActionType = Field(
+        ...,
+        description="Webhook action",
+        examples=[CommonWebhookActionType.ADD],
+    )
 
 
 class SurveyQuestionaryEvent(BaseModel):
