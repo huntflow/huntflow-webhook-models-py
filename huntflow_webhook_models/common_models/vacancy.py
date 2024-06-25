@@ -67,7 +67,7 @@ class Vacancy(BaseModel):
     created: date = Field(
         ...,
         description="Date the vacancy was created",
-        examples=[datetime(1970, 1, 1, 1, 1, 1)],
+        examples=[date(1970, 1, 1)],
     )
     deadline: Optional[date] = Field(
         None,

@@ -1,6 +1,6 @@
 from typing import List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.base import BaseHuntflowWebhookRequest, WebhookMetaInfoBase
 from huntflow_webhook_models.common_models.applicant import Applicant, ApplicantLog, ApplicantTag
@@ -14,7 +14,11 @@ class ApplicantEvent(BaseModel):
 
 
 class ApplicantHookRequestMeta(WebhookMetaInfoBase):
-    webhook_action: ApplicantWebhookActionType
+    webhook_action: ApplicantWebhookActionType = Field(
+        ...,
+        description="Webhook action",
+        examples=[ApplicantWebhookActionType.ADD],
+    )
 
 
 class ApplicantHookRequest(BaseHuntflowWebhookRequest):
