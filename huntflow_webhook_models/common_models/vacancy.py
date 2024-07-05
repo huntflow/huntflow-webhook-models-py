@@ -79,7 +79,7 @@ class Vacancy(BaseModel):
     hidden: bool = Field(..., description="Hidden vacancy flag", examples=[True])
     money: Optional[str] = Field(None, description="Salary for vacancy", examples=["100000"])
     multiple: bool = Field(..., description="Multiple vacancy flag", examples=[False])
-    parent: Optional[int] = Field(None, description="Vacancy parent ID", examples=[1])
+    parent: Optional["Vacancy"] = Field(None, description="Parent vacancy")
     position: str = Field(..., description="Vacancy position", examples=["Python developer"])
     priority: int = Field(..., description="Vacancy priority", examples=[1])
     requirements: Optional[str] = Field(
