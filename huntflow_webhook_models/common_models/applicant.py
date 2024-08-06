@@ -119,7 +119,7 @@ class Applicant(BaseModel):
         description="Additional fields",
         examples=[{"favorite_language": "python"}],
     )
-    externals: Optional[list[ApplicantExternalAccount]]
+    externals: Optional[list[ApplicantExternalAccount]] = None
 
 
 class Respondent(BaseModel):
