@@ -20,7 +20,7 @@ class SurveyAnswerRespondent(BaseModel):
 
 class SurveyAnswerRequest(BaseModel):
     id: int = Field(..., description="Recruitment evaluation request ID", examples=[1])
-    respondent: SurveyAnswerRespondent
+    respondent: Optional[SurveyAnswerRespondent] = None
     created: datetime = Field(
         ...,
         description="Date of creation",

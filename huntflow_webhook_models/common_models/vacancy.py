@@ -95,6 +95,16 @@ class Vacancy(BaseModel):
     )
 
 
+class VacancyCloseReason(BaseModel):
+    id: int = Field(..., description="Vacancy close reason ID", examples=[1])
+    name: str = Field(..., description="Vacancy close reason name", examples=["All hired"])
+
+
+class VacancyHoldReason(BaseModel):
+    id: int = Field(..., description="Vacancy hold reason ID", examples=[1])
+    name: str = Field(..., description="Vacancy hold reason name", examples=["Cancel budget"])
+
+
 class VacancyLog(BaseModel):
     id: int = Field(..., description="Vacancy log ID", examples=[1])
     state: VacancyState = Field(
@@ -107,4 +117,13 @@ class VacancyLog(BaseModel):
         description="Date time the vacancy log created",
         examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
-    # TODO: Solve close reason field problem (field exists with another name)
+    close_reason: Optional[VacancyCloseReason] = Field(
+        None,
+        description="Vacancy close reason",
+        examples=[""],
+    )
+    hold_reason: Optional[VacancyHoldReason] = Field(
+        None,
+        description="Vacancy hold reason",
+        examples=[""],
+    )
