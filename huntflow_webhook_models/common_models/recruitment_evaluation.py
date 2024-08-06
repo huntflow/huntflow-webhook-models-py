@@ -25,3 +25,4 @@ class RecruitmentEvaluation(BaseModel):
     stars: Optional[int] = Field(None, description="Evaluation level", examples=[10])
     applicant: Applicant = Field(..., description="Applicant data")
     vacancy: Vacancy = Field(..., description="Vacancy data")
+    applicant_log_id: int = Field(..., description="Applicant log ID")

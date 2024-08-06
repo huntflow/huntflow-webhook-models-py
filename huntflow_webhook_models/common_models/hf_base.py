@@ -1,3 +1,4 @@
+from datetime import date, datetime
 from typing import Optional
 
 from pydantic import BaseModel, Field
@@ -29,3 +30,33 @@ class AccountSource(BaseModel):
     )
     name: str = Field(..., description="Applicant source name", examples=["Headhunter"])
     type: str = Field(..., description="Applicant source type", examples=["user"])
+
+
+class VacancyQuotaBase(BaseModel):
+    id: int = Field(..., description="Fill quota ID")
+    vacancy_frame: int = Field(..., description="Vacancy frame ID")
+    vacancy_request: Optional[int] = Field(None, description="Vacancy request ID")
+    created: datetime = Field(..., description="Date and time of creating a vacancy quota")
+    changed: Optional[datetime] = Field(
+        None,
+        description="Date and time of updating a vacancy quota",
+    )
+    applicants_to_hire: int = Field(
+        ...,
+        description="Number of applicants should be hired on the quota",
+    )
+    already_hired: int = Field(..., description="Number of applicants already hired on the quota")
+    deadline: Optional[date] = Field(None, description="Date when the quota should be filled")
+    closed: Optional[datetime] = Field(None, description="Date and time when the quota was closed")
+    work_days_in_work: Optional[int] = Field(
+        None,
+        description="How many working days the vacancy is in work",
+    )
+    work_days_after_deadline: Optional[int] = Field(
+        None,
+        description="How many working days the vacancy is in work after deadline",
+    )
+
+
+class VacancyQuotaItem(VacancyQuotaBase):
+    account_info: AccountInfo

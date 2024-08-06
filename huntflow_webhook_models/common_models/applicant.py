@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.common_models.calendar_event import ApplicantLogCalendarEvent
-from huntflow_webhook_models.common_models.hf_base import AccountFile
+from huntflow_webhook_models.common_models.hf_base import AccountFile, VacancyQuotaItem
 from huntflow_webhook_models.common_models.survey_questionary import SurveyQuestionary
 from huntflow_webhook_models.common_models.vacancy import Vacancy
 from huntflow_webhook_models.consts import AgreementState, ApplicantLogType, SurveyType
@@ -37,11 +37,33 @@ class ApplicantPDAgreement(BaseModel):
 
 class VacancyApplicantStatus(BaseModel):
     id: int = Field(..., description="Status ID", examples=[1])
-    name: str = Field(..., description="Status name", examples=["hired"])
 
 
 class ApplicantPhoto(AccountFile):
     pass
+
+
+class ApplicantExternalAccountSource(BaseModel):
+    id: int = Field(..., description="Applicant external account source ID", examples=[1])
+    name: Optional[str] = Field(
+        ...,
+        description="Applicant external account source name",
+        examples=["Headhunter"],
+    )
+
+
+class ApplicantExternalAccount(BaseModel):
+    id: int = Field(..., description="External ID", examples=[1])
+    auth_type: str = Field(..., description="Authentication type", examples=["NATIVE"])
+    account_source: Optional[ApplicantExternalAccountSource] = Field(
+        None,
+        description="Applicant external account source",
+    )
+    updated: Optional[datetime] = Field(
+        None,
+        description="Date the applicant external account was modified",
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
+    )
 
 
 class Applicant(BaseModel):
@@ -81,6 +103,7 @@ class Applicant(BaseModel):
     phone: Optional[str] = Field(None, description="Applicant's phone", examples=["+99999999"])
     skype: Optional[str] = Field(None, description="Applicant's skype", examples=["test_skype"])
     photo: Optional[ApplicantPhoto] = Field(None, description="Applicant's photo")
+    has_photo: bool = Field(..., description="Does the applicant have a photo?", examples=[False])
     social: List[ApplicantSocial] = Field([], description="Applicant social media list")
     questionary: Optional[datetime] = Field(
         None,
@@ -96,6 +119,7 @@ class Applicant(BaseModel):
         description="Additional fields",
         examples=[{"favorite_language": "python"}],
     )
+    externals: Optional[List[ApplicantExternalAccount]] = None
 
 
 class Respondent(BaseModel):
@@ -191,6 +215,10 @@ class ApplicantLog(BaseModel):
         description="Calendar event data",
     )
     vacancy: Optional[Vacancy] = Field(None, description="Vacancy data")
+    hired_in_fill_quota: Optional[VacancyQuotaItem] = Field(
+        None,
+        description="Quota data by which applicant was hired",
+    )
 
 
 class ApplicantTag(BaseModel):
