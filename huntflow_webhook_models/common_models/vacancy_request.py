@@ -1,5 +1,5 @@
 import datetime
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from pydantic import BaseModel, Field
 
@@ -37,4 +37,9 @@ class VacancyRequestLog(BaseModel):
         ...,
         description="Date time vacancy request log created",
         examples=[datetime.datetime(1970, 1, 1, 1, 1, 1)],
+    )
+    reason: Optional[str] = Field(
+        None,
+        description="Vacancy close/hold reason",
+        examples=["All hired"],
     )

@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.base import BaseHuntflowWebhookRequest, WebhookMetaInfoBase
@@ -13,9 +15,15 @@ class VacancyHookRequestMeta(WebhookMetaInfoBase):
     )
 
 
+class User(BaseModel):
+    id: int = Field(..., description="User ID", examples=[1])
+    name: str = Field(..., description="User name", examples=["user@example.com"])
+
+
 class VacancyEvent(BaseModel):
     vacancy: Vacancy
     vacancy_log: VacancyLog
+    user: Optional[User] = Field(..., description="User name", examples=["user@example.com"])
 
 
 class VacancyHookRequest(BaseHuntflowWebhookRequest):
