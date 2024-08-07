@@ -23,7 +23,7 @@ class User(BaseModel):
 class VacancyEvent(BaseModel):
     vacancy: Vacancy
     vacancy_log: VacancyLog
-    user: Optional[User] = Field(..., description="User name", examples=["user@example.com"])
+    user: Optional[User] = Field(None, description="Recruiter who joined or left a vacancy")
 
 
 class VacancyHookRequest(BaseHuntflowWebhookRequest):
