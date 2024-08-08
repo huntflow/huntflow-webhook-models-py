@@ -37,6 +37,7 @@ class ApplicantPDAgreement(BaseModel):
 
 class VacancyApplicantStatus(BaseModel):
     id: int = Field(..., description="Status ID", examples=[1])
+    name: str = Field(..., description="Status name", examples=["hired"])
 
 
 class ApplicantPhoto(AccountFile):
