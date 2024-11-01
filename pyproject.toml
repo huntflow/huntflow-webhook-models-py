@@ -10,7 +10,7 @@ dependencies = [
     "pydantic>=2.3.0",
     "openapi-schema-pydantic>=1.2.4",
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.7.1"
 readme = "README.md"
 license = {text = "MIT"}
 classifiers = [
