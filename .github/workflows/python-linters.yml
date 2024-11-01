@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pdm sync
+          pdm sync -v
 
       - name: Run black
         run: pdm run black . --check
