@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.7.15']
+        python-version: ['3.7.1']
+        os: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v4
@@ -21,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pdm sync -v
+          pdm sync
 
       - name: Run black
         run: pdm run black . --check
