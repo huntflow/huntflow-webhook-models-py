@@ -5,7 +5,7 @@
 groups = ["default", "lint"]
 strategy = ["cross_platform"]
 lock_version = "4.5.0"
-content_hash = "sha256:328ad7005f5930ad06bde615e7b48da8ba8e0c83dfd0ef81bee0a046f432a48c"
+content_hash = "sha256:0bd73ee6eaa138fca5e90da36169dedb19bbdf6d2ea88268796cd90b025577cc"
 
 [[metadata.targets]]
 requires_python = ">=3.7.1"
