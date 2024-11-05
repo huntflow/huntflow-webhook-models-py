@@ -61,6 +61,7 @@ class VacancyState(str, Enum):
     EDIT = "EDIT"
     LEAVE = "LEAVE"
     JOIN = "JOIN"
+    REMOVED = "REMOVED"
 
 
 class VacancyRequestLogAction(str, Enum):
@@ -117,3 +118,9 @@ class SurveyAnswerRequestState(str, Enum):
 class ApplicantOfferLogTypes(str, Enum):
     ADD = "ADD"
     EDIT = "EDIT"
+
+
+class CalendarEventState(str, Enum):
+    SENT = "SENT"
+    QUEUED = "QUEUED"
+    FAILED = "FAILED"

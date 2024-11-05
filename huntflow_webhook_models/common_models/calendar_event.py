@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.consts import (
     CalendarEventReminderMethod,
+    CalendarEventState,
     CalendarEventStatus,
     CalendarEventType,
     Transparency,
@@ -100,6 +101,21 @@ class CalendarEventReminder(BaseModel):
         description="How many minutes in advance to remind about the event",
         examples=[1],
     )
+    multiplier: str = Field(
+        ...,
+        description="Reminder unit of measure.",
+        examples=["minutes"],
+    )
+    value: int = Field(
+        ...,
+        description="How many units in advance to remind about the event in multiplier",
+        examples=[1],
+    )
+
+
+class InterviewType(BaseModel):
+    id: int = Field(..., description="Interview type ID", examples=[1])
+    name: str = Field(..., description="Interview type name", examples=["Phone Interview"])
 
 
 class ApplicantLogCalendarEvent(BaseModel):
@@ -120,6 +136,7 @@ class ApplicantLogCalendarEvent(BaseModel):
         description="Event type",
         examples=[CalendarEventType.interview],
     )
+    interview_type: Optional[InterviewType] = Field(None, description="Interview type")
     start: datetime = Field(
         ...,
         description="Event start date and time",
@@ -160,3 +177,8 @@ class ApplicantLogCalendarEvent(BaseModel):
         examples=[Transparency.busy],
     )
     conference: Optional[Conference] = Field(None, description="Event conference data")
+    state: Optional[CalendarEventState] = Field(
+        None,
+        description="Event state",
+        examples=[CalendarEventState.QUEUED],
+    )

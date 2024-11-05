@@ -56,6 +56,10 @@ class VacancyQuotaBase(BaseModel):
         None,
         description="How many working days the vacancy is in work after deadline",
     )
+    work_days_before_deadline: Optional[int] = Field(
+        None,
+        description="How many working days the vacancy is in work before deadline",
+    )
 
 
 class VacancyQuotaItem(VacancyQuotaBase):
