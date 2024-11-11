@@ -3,6 +3,7 @@ from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+from huntflow_webhook_models.common_models.hf_base import DivisionItem
 from huntflow_webhook_models.consts import VacancyState
 
 
@@ -36,9 +37,12 @@ class AccountRegion(BaseModel):
     name: str = Field(..., description="Account region name", examples=["Turkey"])
 
 
-class AccountDivision(BaseModel):
-    id: int = Field(..., description="Account division ID", examples=[1])
-    name: str = Field(..., description="Account division name", examples=["IT Department"])
+class DivisionPathItem(DivisionItem):
+    parent: Optional[int] = Field(None, description="Parent division")
+
+
+class AccountDivision(DivisionItem):
+    full_path: List[DivisionPathItem] = Field([], description="Division full path")
 
 
 class Vacancy(BaseModel):
