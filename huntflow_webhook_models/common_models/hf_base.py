@@ -64,3 +64,8 @@ class VacancyQuotaBase(BaseModel):
 
 class VacancyQuotaItem(VacancyQuotaBase):
     account_info: AccountInfo
+
+
+class DivisionItem(BaseModel):
+    id: int = Field(..., description="Account division ID", examples=[1])
+    name: str = Field(..., description="Account division name", examples=["IT Department"])
