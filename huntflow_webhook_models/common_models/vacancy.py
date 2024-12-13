@@ -79,7 +79,11 @@ class Vacancy(BaseModel):
         examples=[date(1970, 1, 1)],
     )
     fill_quotas: List[FillQuota] = Field([], description="Vacancy fill quota")
-    frame_id: int = Field(..., description="Vacancy frame ID", examples=[1])
+    frame_id: Optional[int] = Field(
+        None,
+        description="Vacancy frame ID. Empty for a multivacancy.",
+        examples=[1],
+    )
     hidden: bool = Field(..., description="Hidden vacancy flag", examples=[True])
     money: Optional[str] = Field(None, description="Salary for vacancy", examples=["100000"])
     multiple: bool = Field(..., description="Multiple vacancy flag", examples=[False])
@@ -131,3 +135,4 @@ class VacancyLog(BaseModel):
         description="Vacancy hold reason",
         examples=[""],
     )
+    comment: Optional[str] = Field(None, description="Vacancy log comment", examples=["Comment"])
