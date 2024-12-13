@@ -133,6 +133,7 @@ class Respondent(BaseModel):
 class Survey(BaseModel):
     id: int = Field(..., description="Survey ID", examples=[1])
     name: str = Field(..., description="Survey name", examples=["test"])
+    title: Optional[str] = Field(None, description="Survey title", examples=["title"])
     type: SurveyType = Field(..., description="Survey type", examples=[SurveyType.TYPE_A])
     created: datetime = Field(
         ...,
