@@ -3,7 +3,7 @@ from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
-from huntflow_webhook_models.common_models.hf_base import DivisionItem
+from huntflow_webhook_models.common_models.hf_base import DivisionItem, VacancyQuotaItem
 from huntflow_webhook_models.consts import VacancyState
 
 
@@ -100,6 +100,10 @@ class Vacancy(BaseModel):
         {},
         description="Additional vacancy fields",
         examples=[{"experience": "without"}],
+    )
+    vacancy_frame_fill_quota: Optional[VacancyQuotaItem] = Field(
+        None,
+        description="Vacancy frame fill quota",
     )
 
 
