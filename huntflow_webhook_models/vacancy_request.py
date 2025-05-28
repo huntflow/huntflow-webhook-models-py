@@ -1,7 +1,10 @@
 from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.base import BaseHuntflowWebhookRequest, WebhookMetaInfoBase
-from huntflow_webhook_models.common_models.vacancy_request import VacancyRequest, VacancyRequestLog
+from huntflow_webhook_models.common_models.vacancy_request import (
+    VacancyRequestLegacy,
+    VacancyRequestLog,
+)
 from huntflow_webhook_models.consts import CommonWebhookActionType
 
 
@@ -14,7 +17,7 @@ class VacancyRequestHookRequestMeta(WebhookMetaInfoBase):
 
 
 class VacancyRequestEvent(BaseModel):
-    vacancy_request: VacancyRequest
+    vacancy_request: VacancyRequestLegacy
     vacancy_request_log: VacancyRequestLog
 
 

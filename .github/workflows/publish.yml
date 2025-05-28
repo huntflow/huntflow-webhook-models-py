@@ -11,9 +11,16 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
       - name: Set up PDM
         uses: pdm-project/setup-pdm@v3
         with:
+          python-version: 3.8
           version: 2.20.1
 
       - name: Publish package distributions to PyPI

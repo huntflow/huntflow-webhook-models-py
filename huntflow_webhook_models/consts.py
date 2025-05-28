@@ -124,3 +124,9 @@ class CalendarEventState(str, Enum):
     SENT = "SENT"
     QUEUED = "QUEUED"
     FAILED = "FAILED"
+
+
+class VacancyRequestStatus(str, Enum):
+    pending = "pending"
+    approved = "approved"
+    rejected = "rejected"
