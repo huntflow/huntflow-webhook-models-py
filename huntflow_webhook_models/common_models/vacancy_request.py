@@ -6,7 +6,12 @@ from pydantic import BaseModel, Field
 from huntflow_webhook_models.consts import VacancyRequestLogAction
 
 
-class VacancyRequest(BaseModel):
+class VacancyRequestLegacy(BaseModel):
+    """
+    Legacy vacancy request structure.
+    It should be replaced with VacancyRequest in a next webhook version
+    """
+
     id: int = Field(..., description="Vacancy request ID", examples=[1])
     account_vacancy_request: int = Field(
         ...,

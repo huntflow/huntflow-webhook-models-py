@@ -8,7 +8,7 @@ from huntflow_webhook_models.common_models.hf_base import (
     DivisionItem,
     VacancyQuotaItem,
 )
-from huntflow_webhook_models.common_models.vacancy_request import VacancyRequest
+from huntflow_webhook_models.common_models.vacancy_request import VacancyRequestLegacy
 from huntflow_webhook_models.consts import VacancyRequestStatus, VacancyState
 
 
@@ -69,7 +69,7 @@ class VacancyRequestApprovalState(BaseModel):
     )
 
 
-class VacancyRequestWithExtraInfo(VacancyRequest):
+class VacancyRequest(VacancyRequestLegacy):
     account: int = Field(..., description="Account ID")
     vacancy: int = Field(..., description="Vacancy ID")
     updated: Optional[datetime] = Field(
@@ -146,7 +146,7 @@ class Vacancy(BaseModel):
         None,
         description="Vacancy frame fill quota",
     )
-    vacancy_request: Optional[VacancyRequestWithExtraInfo] = Field(
+    vacancy_request: Optional[VacancyRequest] = Field(
         None,
         description="Vacancy request",
     )
