@@ -16,8 +16,8 @@ class VacancyHookRequestMeta(WebhookMetaInfoBase):
 
 
 class User(BaseModel):
-    id: Optional[int] = Field(..., description="User ID", examples=[1])
-    name: Optional[str] = Field(..., description="User name", examples=["user@example.com"])
+    id: Optional[int] = Field(None, description="User ID", examples=[1])
+    name: Optional[str] = Field(None, description="User name", examples=["user@example.com"])
 
 
 class VacancyEvent(BaseModel):
