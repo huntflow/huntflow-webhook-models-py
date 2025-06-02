@@ -101,13 +101,13 @@ class CalendarEventReminder(BaseModel):
         description="How many minutes in advance to remind about the event",
         examples=[1],
     )
-    multiplier: str = Field(
-        ...,
+    multiplier: Optional[str] = Field(
+        None,
         description="Reminder unit of measure.",
         examples=["minutes"],
     )
-    value: int = Field(
-        ...,
+    value: Optional[int] = Field(
+        None,
         description="How many units in advance to remind about the event in multiplier",
         examples=[1],
     )
