@@ -1,17 +1,14 @@
 import datetime
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+from huntflow_webhook_models.common_models.hf_base import AccountInfo, File
+from huntflow_webhook_models.common_models.vacancy import VacancyRequestApprovalState
 from huntflow_webhook_models.consts import VacancyRequestLogAction
 
 
-class VacancyRequestLegacy(BaseModel):
-    """
-    Legacy vacancy request structure.
-    It should be replaced with VacancyRequest in a next webhook version
-    """
-
+class VacancyRequest(BaseModel):
     id: int = Field(..., description="Vacancy request ID", examples=[1])
     account_vacancy_request: int = Field(
         ...,
@@ -29,6 +26,22 @@ class VacancyRequestLegacy(BaseModel):
         description="Vacancy request fields",
         examples=[{"company": "test_company"}],
     )
+    account: int = Field(..., description="Account ID")
+    vacancy: int = Field(..., description="Vacancy ID")
+    updated: Optional[datetime.datetime] = Field(
+        None,
+        description="Date and time of editing of the request",
+        examples=[datetime.datetime(1970, 1, 1, 1, 1, 1)],
+    )
+    changed: Optional[datetime.datetime] = Field(
+        None,
+        description="Date and time of attaching to vacancy",
+        examples=[datetime.datetime(1970, 1, 1, 1, 1, 1)],
+    )
+    states: List[VacancyRequestApprovalState] = Field([], description="List of approval states")
+    account_info: Optional[AccountInfo]
+    status: Optional[str] = Field(..., description="Vacancy request status")
+    files: List[File] = Field([], description="List of uploaded files")
 
 
 class VacancyRequestLog(BaseModel):

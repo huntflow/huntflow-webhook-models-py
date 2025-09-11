@@ -4,7 +4,7 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-class AccountFile(BaseModel):
+class File(BaseModel):
     id: int = Field(..., description="File ID", examples=[1])
     content_type: str = Field(..., description="MIME type", examples=["image/jpeg"])
     name: str = Field(..., description="Filename", examples=["test_file.jpeg"])
