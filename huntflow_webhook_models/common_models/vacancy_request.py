@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.common_models.hf_base import AccountInfo, File
 from huntflow_webhook_models.common_models.vacancy import VacancyRequestApprovalState
-from huntflow_webhook_models.consts import VacancyRequestLogAction
+from huntflow_webhook_models.consts import VacancyRequestLogAction, VacancyRequestStatus
 
 
 class VacancyRequest(BaseModel):
@@ -40,7 +40,7 @@ class VacancyRequest(BaseModel):
     )
     states: List[VacancyRequestApprovalState] = Field([], description="List of approval states")
     account_info: Optional[AccountInfo]
-    status: Optional[str] = Field(..., description="Vacancy request status")
+    status: Optional[VacancyRequestStatus] = Field(..., description="Vacancy request status")
     files: List[File] = Field([], description="List of uploaded files")
 
 
