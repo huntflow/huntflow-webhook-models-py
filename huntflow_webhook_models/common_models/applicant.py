@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.common_models.calendar_event import ApplicantLogCalendarEvent
-from huntflow_webhook_models.common_models.hf_base import AccountFile, VacancyQuotaItem
+from huntflow_webhook_models.common_models.hf_base import File, VacancyQuotaItem
 from huntflow_webhook_models.common_models.survey_questionary import SurveyQuestionary
 from huntflow_webhook_models.common_models.vacancy import Vacancy
 from huntflow_webhook_models.consts import AgreementState, ApplicantLogType, SurveyType
@@ -40,7 +40,7 @@ class VacancyApplicantStatus(BaseModel):
     name: str = Field(..., description="Status name", examples=["hired"])
 
 
-class ApplicantPhoto(AccountFile):
+class ApplicantPhoto(File):
     pass
 
 
@@ -199,7 +199,7 @@ class ApplicantLog(BaseModel):
         examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     source: Optional[str] = None
-    files: List[AccountFile] = Field([], description="List of uploaded files")
+    files: List[File] = Field([], description="List of uploaded files")
     survey_answer_of_type_a: Optional[SurveyAnswerOfTypeA] = Field(
         None,
         description="Survey questionary data",

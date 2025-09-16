@@ -3,12 +3,8 @@ from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
-from huntflow_webhook_models.common_models.hf_base import (
-    AccountInfo,
-    DivisionItem,
-    VacancyQuotaItem,
-)
-from huntflow_webhook_models.common_models.vacancy_request import VacancyRequestLegacy
+from huntflow_webhook_models.common_models.hf_base import DivisionItem, VacancyQuotaItem
+from huntflow_webhook_models.common_models.vacancy_request import VacancyRequest
 from huntflow_webhook_models.consts import VacancyRequestStatus, VacancyState
 
 
@@ -67,23 +63,6 @@ class VacancyRequestApprovalState(BaseModel):
         None,
         description="Date and time of the last approval change",
     )
-
-
-class VacancyRequest(VacancyRequestLegacy):
-    account: int = Field(..., description="Account ID")
-    vacancy: int = Field(..., description="Vacancy ID")
-    updated: Optional[datetime] = Field(
-        None,
-        description="Date and time of editing of the request",
-        examples=[datetime(1970, 1, 1, 1, 1, 1)],
-    )
-    changed: Optional[datetime] = Field(
-        None,
-        description="Date and time of attaching to vacancy",
-        examples=[datetime(1970, 1, 1, 1, 1, 1)],
-    )
-    states: List[VacancyRequestApprovalState] = Field([], description="List of approval states")
-    account_info: Optional[AccountInfo]
 
 
 class Vacancy(BaseModel):
