@@ -1,7 +1,7 @@
 
 [project]
 name = "huntflow-webhook-models"
-version = "0.1.17"
+version = "0.1.18"
 description = "Huntflow webhooks requests data models"
 authors = [
     {name = "Developers huntflow", email = "developer@huntflow.ru"},
