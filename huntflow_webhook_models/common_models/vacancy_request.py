@@ -4,8 +4,26 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.common_models.hf_base import AccountInfo, File
-from huntflow_webhook_models.common_models.vacancy import VacancyRequestApprovalState
 from huntflow_webhook_models.consts import VacancyRequestLogAction, VacancyRequestStatus
+
+
+class VacancyRequestApprovalState(BaseModel):
+    id: int = Field(..., description="Approval ID")
+
+    status: VacancyRequestStatus = Field(..., description="Approval status")
+    email: str = Field(
+        ...,
+        description="Email, which was used to send the request for approval",
+    )
+    reason: Optional[str] = Field(
+        None,
+        description="Rejection reason",
+    )
+    order: Optional[int] = Field(None, description="Approval order number")
+    changed: Optional[datetime.datetime] = Field(
+        None,
+        description="Date and time of the last approval change",
+    )
 
 
 class VacancyRequest(BaseModel):

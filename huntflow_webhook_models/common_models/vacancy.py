@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.common_models.hf_base import DivisionItem, VacancyQuotaItem
 from huntflow_webhook_models.common_models.vacancy_request import VacancyRequest
-from huntflow_webhook_models.consts import VacancyRequestStatus, VacancyState
+from huntflow_webhook_models.consts import VacancyState
 
 
 class FillQuota(BaseModel):
@@ -44,25 +44,6 @@ class DivisionPathItem(DivisionItem):
 
 class AccountDivision(DivisionItem):
     full_path: List[DivisionPathItem] = Field([], description="Division full path")
-
-
-class VacancyRequestApprovalState(BaseModel):
-    id: int = Field(..., description="Approval ID")
-
-    status: VacancyRequestStatus = Field(..., description="Approval status")
-    email: str = Field(
-        ...,
-        description="Email, which was used to send the request for approval",
-    )
-    reason: Optional[str] = Field(
-        None,
-        description="Rejection reason",
-    )
-    order: Optional[int] = Field(None, description="Approval order number")
-    changed: Optional[datetime] = Field(
-        None,
-        description="Date and time of the last approval change",
-    )
 
 
 class Vacancy(BaseModel):
