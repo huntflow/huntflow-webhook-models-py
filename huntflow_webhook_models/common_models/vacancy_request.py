@@ -44,8 +44,8 @@ class VacancyRequest(BaseModel):
         description="Vacancy request fields",
         examples=[{"company": "test_company"}],
     )
-    account: int = Field(..., description="Account ID")
-    vacancy: int = Field(..., description="Vacancy ID")
+    account: Optional[int] = Field(None, description="Account ID")
+    vacancy: Optional[int] = Field(None, description="Vacancy ID")
     updated: Optional[datetime.datetime] = Field(
         None,
         description="Date and time of editing of the request",
@@ -57,8 +57,8 @@ class VacancyRequest(BaseModel):
         examples=[datetime.datetime(1970, 1, 1, 1, 1, 1)],
     )
     states: List[VacancyRequestApprovalState] = Field([], description="List of approval states")
-    account_info: Optional[AccountInfo]
-    status: Optional[VacancyRequestStatus] = Field(..., description="Vacancy request status")
+    account_info: Optional[AccountInfo] = None
+    status: Optional[VacancyRequestStatus] = Field(None, description="Vacancy request status")
     files: List[File] = Field([], description="List of uploaded files")
 
 
