@@ -13,6 +13,7 @@ class WebhookEventType(str, Enum):
 
 class CommonWebhookActionType(str, Enum):
     ADD = "ADD"
+    EDIT = "EDIT"
 
 
 class ApplicantWebhookActionType(str, Enum):

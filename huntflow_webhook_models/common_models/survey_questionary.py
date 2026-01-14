@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 
 from pydantic import BaseModel, Field
 
@@ -28,14 +28,14 @@ class Survey(BaseModel):
     }
     id: int = Field(..., description="Survey ID", examples=[1])
     name: str = Field(..., description="Survey name", examples=["test"])
-    schema_: Dict[str, str] = Field(
-        ...,
+    schema_: Optional[Dict[str, Any]] = Field(
+        None,
         alias="schema",
         description="Survey schema",
         examples=[__survey_schema_example],
     )
-    ui_schema: Dict[str, str] = Field(
-        ...,
+    ui_schema: Optional[Dict[str, Any]] = Field(
+        None,
         description="UI schema",
         examples=[__ui_schema_example],
     )
@@ -88,7 +88,7 @@ class SurveyQuestionary(BaseModel):
     )
     respondent: Respondent
     created_by: CreatedBy
-    answer: Answer
+    answer: Optional[Answer] = None
     link: str = Field(
         ...,
         description="Survey link",
