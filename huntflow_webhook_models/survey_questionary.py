@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.base import BaseHuntflowWebhookRequest, WebhookMetaInfoBase
@@ -16,9 +18,9 @@ class SurveyQuestionaryHookRequestMeta(WebhookMetaInfoBase):
 
 
 class SurveyQuestionaryEvent(BaseModel):
-    applicant: Applicant
-    vacancy: VacancyExternal
-    applicant_log_id: int = Field(..., description="Applicant log ID", examples=[1])
+    applicant: Optional[Applicant] = None
+    vacancy: Optional[VacancyExternal] = None
+    applicant_log_id: Optional[int] = Field(None, description="Applicant log ID", examples=[1])
     survey_questionary: SurveyQuestionary
 
 
