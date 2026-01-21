@@ -3,7 +3,7 @@
 
 [metadata]
 groups = ["default", "lint"]
-strategy = ["cross_platform"]
+strategy = []
 lock_version = "4.5.0"
 content_hash = "sha256:406714140b2c8aeabb7d8099d46f1eaea427a444aba78fb8468c717794e89c5a"
 
