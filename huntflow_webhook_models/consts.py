@@ -110,6 +110,12 @@ class ApplicantResponseExternalStatus(str, Enum):
     REJECTED = "REJECTED"
 
 
+class PrecisionTypes(str, Enum):
+    year = "year"
+    month = "month"
+    day = "day"
+
+
 class SurveyAnswerRequestState(str, Enum):
     NOT_SENT = "NOT_SENT"
     SENT = "SENT"
