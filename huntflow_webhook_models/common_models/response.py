@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from pydantic.fields import Field
 from pydantic.main import BaseModel
@@ -24,7 +24,17 @@ class ApplicantExternalResponse(BaseModel):
         description="Foreign applicant external ID",
         examples=["external-9-23"],
     )
+    data: Optional[Dict[str, Any]] = Field(
+        None,
+        description="Additional response data",
+        examples=[{"title": "QA"}],
+    )
     resume: Optional[dict] = Field(None, description="Applicant resume")
+    response_data: Optional[Dict[str, Any]] = Field(
+        None,
+        description="Detailed response data from external source",
+        examples=[{"state": "response", "has_updates": True}],
+    )
     state: Optional[ApplicantResponseExternalStatus] = Field(
         None,
         description="Response state",
@@ -49,6 +59,11 @@ class VacancyExternal(BaseModel):
     account_vacancy_external: AccountVacancyExternal = Field(
         ...,
         description="Account vacancy external",
+    )
+    created: Optional[datetime] = Field(
+        None,
+        description="The datetime when the vacancy external was created",
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
     data: str = Field(
         ...,
