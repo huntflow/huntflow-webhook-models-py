@@ -30,7 +30,6 @@ class Survey(BaseModel):
     name: str = Field(..., description="Survey name", examples=["test"])
     survey_schema: Optional[Dict[str, Any]] = Field(
         None,
-        alias="survey_schema",
         description="Survey schema",
         examples=[__survey_schema_example],
     )
