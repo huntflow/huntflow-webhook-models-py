@@ -1,7 +1,9 @@
 from datetime import datetime
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union, List
 
 from pydantic import BaseModel, Field
+
+from huntflow_webhook_models.common_models.hf_base import File
 
 
 class Survey(BaseModel):
@@ -70,7 +72,7 @@ class Answer(BaseModel):
         description="Answer date time",
         examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
-    data: Dict[str, str] = Field(
+    data: Dict[str, Union[str, List[File]]] = Field(
         {},
         description="Answer data",
         examples=[{"d4hm5pRsbXPEQUSyiqXJA": "Applicant's smart answer"}],
