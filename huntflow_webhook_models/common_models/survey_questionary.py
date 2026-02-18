@@ -72,7 +72,7 @@ class Answer(BaseModel):
         description="Answer date time",
         examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
-    data: Dict[str, Union[str, List[File]]] = Field(
+    data: Dict[str, Union[str, int, List[File], List[str]]] = Field(
         {},
         description="Answer data",
         examples=[{"d4hm5pRsbXPEQUSyiqXJA": "Applicant's smart answer"}],
