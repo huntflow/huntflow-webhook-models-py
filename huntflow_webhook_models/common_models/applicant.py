@@ -22,6 +22,12 @@ class ApplicantSocial(BaseModel):
     )
 
 
+class ApplicantSite(BaseModel):
+    id: int = Field(..., description="Site ID", examples=[1])
+    site_type: str = Field(..., description="Site type", examples=["MAX"])
+    value: str = Field(..., description="Site url", examples=["https://max.ru/u/1xBeccJnjIvmlJflCNJjZOVtCJXNzrciOTWpebTSQLPspjUoBgj"])
+
+
 class ApplicantPDAgreement(BaseModel):
     state: Optional[AgreementState] = Field(
         None,
@@ -106,6 +112,7 @@ class Applicant(BaseModel):
     photo: Optional[ApplicantPhoto] = Field(None, description="Applicant's photo")
     has_photo: bool = Field(..., description="Does the applicant have a photo?", examples=[False])
     social: List[ApplicantSocial] = Field([], description="Applicant social media list")
+    site: List[ApplicantSite] = Field([], description="Applicant sites list")
     questionary: Optional[datetime] = Field(
         None,
         description="Date of filling / changing additional information",
