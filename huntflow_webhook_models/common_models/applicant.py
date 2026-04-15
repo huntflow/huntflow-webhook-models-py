@@ -25,7 +25,11 @@ class ApplicantSocial(BaseModel):
 class ApplicantSite(BaseModel):
     id: int = Field(..., description="Site ID", examples=[1])
     site_type: str = Field(..., description="Site type", examples=["MAX"])
-    value: str = Field(..., description="Site url", examples=["https://max.ru/u/1xBeccJnjIvmlJflCNJjZOVtCJXNzrciOTWpebTSQLPspjUoBgj"])
+    value: str = Field(
+        ...,
+        description="Site url",
+        examples=["https://max.ru/u/1xBeccJnjIvmlJflCNJjZOVtCJXNzrciOTWpebTSQLPspjUoBgj"],
+    )
 
 
 class ApplicantPDAgreement(BaseModel):
