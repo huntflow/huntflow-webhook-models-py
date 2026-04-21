@@ -116,7 +116,7 @@ class Applicant(BaseModel):
     photo: Optional[ApplicantPhoto] = Field(None, description="Applicant's photo")
     has_photo: bool = Field(..., description="Does the applicant have a photo?", examples=[False])
     social: List[ApplicantSocial] = Field([], description="Applicant social media list")
-    site: List[ApplicantSite] = Field([], description="Applicant sites list")
+    site: Optional[List[ApplicantSite]] = Field([], description="Applicant sites list")
     questionary: Optional[datetime] = Field(
         None,
         description="Date of filling / changing additional information",
