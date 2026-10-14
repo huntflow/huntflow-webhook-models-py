@@ -131,3 +131,9 @@ class VacancyRequestStatus(str, Enum):
     pending = "pending"
     approved = "approved"
     rejected = "rejected"
+
+
+class VacancyRequestApprovalStatus(str, Enum):
+    PENDING = "PENDING"
+    APPROVED = "APPROVED"
+    REJECTED = "REJECTED"

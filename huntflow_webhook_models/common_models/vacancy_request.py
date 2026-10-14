@@ -4,13 +4,18 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 
 from huntflow_webhook_models.common_models.hf_base import AccountInfo, File
-from huntflow_webhook_models.consts import VacancyRequestLogAction, VacancyRequestStatus
+from huntflow_webhook_models.consts import (
+    VacancyRequestApprovalStatus,
+    VacancyRequestLogAction,
+    VacancyRequestStatus,
+)
 
 
 class VacancyRequestApprovalState(BaseModel):
     id: int = Field(..., description="Approval ID")
-
-    status: VacancyRequestStatus = Field(..., description="Approval status")
+    vacancy_request: Optional[int] = Field(None, description="Vacancy request ID")
+    vacancy_request_id: Optional[int] = Field(None, description="Vacancy request ID")
+    status: VacancyRequestApprovalStatus = Field(..., description="Approval status")
     email: str = Field(
         ...,
         description="Email, which was used to send the request for approval",
@@ -59,6 +64,16 @@ class VacancyRequest(BaseModel):
     states: List[VacancyRequestApprovalState] = Field([], description="List of approval states")
     account_info: Optional[AccountInfo] = None
     status: Optional[VacancyRequestStatus] = Field(None, description="Vacancy request status")
+    rejected: Optional[datetime.datetime] = Field(
+        None,
+        description="Date and time of vacancy request rejection",
+        examples=[datetime.datetime(1970, 1, 1, 1, 1, 1)],
+    )
+    rejection_reason: Optional[str] = Field(None, description="Vacancy request rejection reason")
+    rejected_by: Optional[AccountInfo] = Field(
+        None,
+        description="User who rejected the vacancy request",
+    )
     files: List[File] = Field([], description="List of uploaded files")
 
 
