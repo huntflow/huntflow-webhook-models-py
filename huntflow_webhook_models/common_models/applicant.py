@@ -209,6 +209,11 @@ class ApplicantLog(BaseModel):
         description="Log creation date time",
         examples=[datetime(1970, 1, 1, 1, 1, 1)],
     )
+    updated: Optional[datetime] = Field(
+        None,
+        description="Log update date time",
+        examples=[datetime(1970, 1, 1, 1, 1, 1)],
+    )
     source: Optional[str] = None
     files: List[File] = Field([], description="List of uploaded files")
     survey_answer_of_type_a: Optional[SurveyAnswerOfTypeA] = Field(

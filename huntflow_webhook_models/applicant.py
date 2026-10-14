@@ -1,8 +1,8 @@
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
-from huntflow_webhook_models.base import BaseHuntflowWebhookRequest, WebhookMetaInfoBase
+from huntflow_webhook_models.base import Author, BaseHuntflowWebhookRequest, WebhookMetaInfoBase
 from huntflow_webhook_models.common_models.applicant import Applicant, ApplicantLog, ApplicantTag
 from huntflow_webhook_models.consts import ApplicantWebhookActionType
 
@@ -19,6 +19,7 @@ class ApplicantHookRequestMeta(WebhookMetaInfoBase):
         description="Webhook action",
         examples=[ApplicantWebhookActionType.ADD],
     )
+    updated_by: Optional[Author] = Field(None, description="User who updated the applicant")
 
 
 class ApplicantHookRequest(BaseHuntflowWebhookRequest):
